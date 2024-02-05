@@ -7,7 +7,7 @@
     <title>dashboard</title>
 </head>
 <?php
-require_once('connect.php');
+require_once('../connect.php');
 
 ?>
 
