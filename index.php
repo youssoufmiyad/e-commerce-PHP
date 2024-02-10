@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="CSS/main.css" type="text/css">
 </head>
 
+<?php
+require_once('./generate_product_page.php'); ?>
 
 <body>
 
