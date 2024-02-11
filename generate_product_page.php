@@ -4,7 +4,6 @@ require_once('./dashboard/connect.php');
 $products = $db->query(
     "SELECT * FROM products"
 );
-$db->close();
 $json = [];
 
 if ($products->num_rows > 0) {
@@ -13,14 +12,18 @@ if ($products->num_rows > 0) {
         if (!file_exists("product/" . $row["ProductId"] . "/index.php")) {
             mkdir("product/" . $row["ProductId"] . "/", 0777, true);
             $file = fopen("product/" . $row["ProductId"] . "/index.php", "w") or die("Unable to open file!");
-            productDetailTemplate($file, $row["Name"], $row["Price"], $row["Vendor"], $row["Quantity"]);
+            $image = $db->query("SELECT Image FROM products_photo WHERE ProductId=".$row["ProductId"].";");
+            $image = $image->fetch_assoc();
+            $base64img = base64_encode($image["Image"]);
+            $src= "data:image/jfif;base64,". $base64img;
+            productDetailTemplate($file, $row["Name"], $row["Price"], $row["Vendor"], $row["Quantity"],$src);
             fclose($file);
         }
         array_push($json, $row);
     }
 }
 
-function productDetailTemplate($file, $name, $price, $vendor, $quantity)
+function productDetailTemplate($file, $name, $price, $vendor, $quantity, $image)
 {
     fwrite($file, "
     <!DOCTYPE html>
@@ -33,8 +36,9 @@ function productDetailTemplate($file, $name, $price, $vendor, $quantity)
     <body>
         <div class=\"product-name\" >$name</div>
         <div class=\"product-price\">$price €</div>
-        <div class=\"product-vendor\">$vendor €</div>
-        <div class=\"product-quantity\">$quantity €</div>
+        <div class=\"product-vendor\">$vendor </div>
+        <div class=\"product-quantity\">$quantity </div>
+        <div class=\"product-image\"><img src=\"$image\" alt=\"product image\"/></div>
     </body>
     </html>
     ");
