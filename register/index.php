@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <?php
 require_once("../dashboard/connect.php");
+
+$PASSWORD_REGEXP = "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$^";
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (isset($_POST['form-email']) && isset($_POST['form-password']) && isset($_POST['form-confirmPWD']) && isset($_POST['form-firstname']) && isset($_POST['form-lastname'])) {
+    if (!empty($_POST['form-email']) && !empty($_POST['form-password']) && !empty($_POST['form-confirmPWD']) && !empty($_POST['form-firstname']) && !empty($_POST['form-lastname'])) {
         $lastname = $_POST['form-lastname'];
         $firstname = $_POST['form-firstname'];
         $email = $_POST['form-email'];
-        $pre_hash_pwd = $_POST['form-password'];
-        $pre_hash_confirm_pwd = $_POST['form-confirmPWD'];
-        $password = password_hash($pre_hash_pwd, PASSWORD_DEFAULT);
-
-        $postQuery = $db->prepare("INSERT INTO `users` (`Lastname`, `Firstname`, `Email`, `Passwd`) VALUES (?,?,?,?);");
-        $postQuery->bind_param("ssss", $lastname, $firstname, $email, $password);
-        try {
-            $postQuery->execute();
-            echo "user inscris !";
-        } catch (Exception $e) {
-            throw $e;
+        $password = password_hash($_POST['form-password'], PASSWORD_DEFAULT);
+        $confirm_password = password_verify($_POST['form-confirmPWD'], $password);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Invalid email format";
+        } else if (!filter_var($_POST['form-password'], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $PASSWORD_REGEXP)))) {
+            echo "invalid password";
+        } else if (!$confirm_password) {
+            echo "Les mot de passe ne corresspondent pas";
+        } else {
+            $postQuery = $db->prepare("INSERT INTO `users` (`Lastname`, `Firstname`, `Email`, `Passwd`) VALUES (?,?,?,?);");
+            $postQuery->bind_param("ssss", $lastname, $firstname, $email, $password);
+            try {
+                $postQuery->execute();
+                echo "user inscris !";
+            } catch (Exception $e) {
+                throw $e;
+            }
         }
+
     } else {
         echo "incomplet";
     }
