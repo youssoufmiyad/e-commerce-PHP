@@ -8,7 +8,7 @@
 
 - Back-End :
     - création/implémentation de la BDD
-    - API CRUD :
-        - produits
-        - utilisateurs
-    - dashboard pour les administrateurs
+    - dashboard pour les administrateurs :
+        - CRUD produits
+        - CRUD utilisateurs
+    
