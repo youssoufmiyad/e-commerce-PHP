@@ -3,7 +3,6 @@
 require_once("../dashboard/connect.php");
 ?>
 <?php
-$return = "";
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
         $users = $db->query(
@@ -15,36 +14,37 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (isset($_POST['form-email']) && isset($_POST['form-password'])) {
         $email = $_POST['form-email'];
-        $pre_hash_pwd = $_POST['form-password'];
-        $password = password_hash($pre_hash_pwd, PASSWORD_DEFAULT);
+        $password = $_POST['form-password'];
 
         if ($users->num_rows > 0) {
-            // output data of each row
             while ($row = $users->fetch_assoc()) {
-                if ($row["Email"] === $email & $row["Passwd"] === $password) {
-                    session_start();
-                    $_SESSION["user"] = array(
-                        "userId" => $row["UserId"],
-                        "lastName" => $row["LastName"],
-                        "firstName" => $row["FirstName"],
-                        "email" => $row["Email"],
-                        "password" => $row["Passwd"]
-                    );
-                    setcookie("user", $_SESSION["user"], time() + (86400 * 30), "/");
-                    header("location: ./");
+                if ($row["Email"] === $email & password_verify($password, $row["Passwd"])) {
+                    try {
+                        session_start();
+
+                        $_SESSION["user"] = array(
+                            "userId" => $row["UserId"],
+                            "lastName" => $row["LastName"],
+                            "firstName" => $row["FirstName"],
+                            "email" => $row["Email"],
+                            "password" => $row["Passwd"]
+                        );
+                        setcookie("userId", $_SESSION["user"]["userId"], time() + (86400 * 30), "/");
+                        header("location: ../");
+                    } catch (Exception $th) {
+                        throw $th;
+                    }
+
                 } else {
                     echo "<div class=\"login-error\">adresse mail ou mot de passe incorrect</div>";
+
                 }
 
             }
-        } else {
-            $return = "empty";
         }
-
     }
 }
-echo "return : $return"
-    ?>
+?>
 <html lang="en">
 
 <head>
@@ -61,7 +61,7 @@ echo "return : $return"
             <input type="text" id="form-email" name="form-email"><br>
 
             <label for="form-password">Password:</label><br>
-            <input type="password" id="form-confirmPWD" name="form-confirmPWD"><br>
+            <input type="password" id="form-password" name="form-password"><br>
 
             <button>submit</button>
         </form>
