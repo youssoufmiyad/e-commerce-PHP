@@ -13,22 +13,32 @@ require_once('../../connect.php');
 ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (isset($_POST['product-name']) && isset($_POST['price']) && isset($_POST['vendor']) && isset($_POST['quantity'])) {
+    if (!empty($_POST['product-name']) && !empty($_POST['price']) && !empty($_POST['vendor']) && !empty($_POST['quantity']) && !empty($_FILES['productImage'])) {
         $name = $_POST['product-name'];
         $price = $_POST['price'];
         $vendor = $_POST['vendor'];
         $quantity = $_POST['quantity'];
+        $image = file_get_contents($_FILES['productImage']['tmp_name']);
 
         $postQuery = $db->prepare("INSERT INTO `products` (`Name`, `Price`, `Vendor`, `Quantity`) VALUES (?,?,?,?);");
         $postQuery->bind_param("ssss", $name, $price, $vendor, $quantity);
         try {
             $postQuery->execute();
             echo "Produit ajouté avec succès !";
+            $result = $db->query("SELECT ProductId from products WHERE Name='$name' AND Price=$price AND Vendor='$vendor' AND Quantity='$quantity'");
+
+            $actualProduct = $result->fetch_assoc();
+
+            $addPhoto = $db->prepare("INSERT INTO `products_photo` (`ProductId`, `Image`) VALUES (?,?);");
+            $addPhoto->bind_param("ss", $actualProduct["ProductId"], $image);
+            $addPhoto->execute();
+            echo "Photo ajouté avec succès !";
+
         } catch (Exception $e) {
             throw $e;
         }
     } else {
-        throw new Exception("Post params empty", 1);
+        throw new Exception("form incomplet", 1);
 
     }
 }
@@ -46,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
     <div>
         <span>Création d'un produit</span>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <label for="product-name">Nom du produit :</label>
             <input type="text" name="product-name" id="product-name" placeholder="entrez un nom">
             <br>
@@ -62,6 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <label for="quantity">Quantité :</label>
             <input type="number" name="quantity" id="quantity" placeholder="combien :">
             <br>
+
+            <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+
+            <label for="productImage">Image</label>
+            <input type="file" name="productImage" id="productImage" accept="image/png, image/gif, image/jpeg"><br>
+
 
             <button>test style bouton</button>
         </form>
