@@ -14,8 +14,8 @@ if ($products->num_rows > 0) {
             $file = fopen("product/" . $row["ProductId"] . "/index.php", "w") or die("Unable to open file!");
             $image = $db->query("SELECT Image FROM products_photo WHERE ProductId=".$row["ProductId"].";");
             $image = $image->fetch_assoc();
-            $base64img = base64_encode($image["Image"]);
-            $src= "data:image/jfif;base64,". $base64img;
+            $base64img = @base64_encode($image["Image"]);
+            $src= "data:image/jpeg;base64,". $base64img;
             productDetailTemplate($file, $row["Name"], $row["Price"], $row["Vendor"], $row["Quantity"],$src);
             fclose($file);
         }

@@ -24,17 +24,14 @@ require_once('../dashboard/connect.php');
                 $image = $db->query("SELECT Image FROM products_photo WHERE ProductId=" . $produit["ProductId"] . ";");
                 $image = $image->fetch_assoc();
                 $base64img = @base64_encode($image["Image"]);
-                $src = "data:image/jfif;base64," . $base64img;
+                $src = "data:image/jpeg;base64," . $base64img;
                 ?>
                 <div class="products-item" id="product-<?= $produit['ProductId'] ?>">
                     <div class="product-name">
                         <?= $produit['Name'] ?>
                     </div>
                     <div class="product-price">
-                        <?= $produit['Price'] ?>
-                    </div>
-                    <div class="product-vendor">
-                        <?= $produit['Vendor'] ?>
+                        <?= $produit['Price'] ?>€
                     </div>
                     <div class="product-image">
                         <img src="<?= $src ?>" alt="product image">
