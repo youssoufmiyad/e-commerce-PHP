@@ -14,7 +14,7 @@ session_start();
 require_once('./generate_product_page.php'); ?>
 
 <body>
-    <form action=<?php session_destroy(); ?>>
+    <form action="disconnect.php">
         <input type="submit" name="disconnect" value="disconnect" />
     </form>
 
@@ -32,4 +32,3 @@ require_once('./generate_product_page.php'); ?>
 
 </html>
 
-<?php
