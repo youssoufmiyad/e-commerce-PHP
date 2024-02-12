@@ -7,7 +7,8 @@
 </head>
 
 <?php
-require_once('./generate_product_page.php'); ?>
+require_once('./generate_product_page.php'); 
+?>
 
 <body>
 
