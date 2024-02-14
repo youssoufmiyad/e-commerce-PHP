@@ -24,6 +24,7 @@ require_once('./generate_product_page.php'); ?>
     <?php
     if (@$_SESSION["user"]) {
         echo "<h1>Hello " . $_SESSION["user"]["firstName"] . "</h1>";
+        echo bin2hex(random_bytes(16));
     }
 
     ?>

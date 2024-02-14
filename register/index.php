@@ -26,6 +26,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } catch (Exception $e) {
                 throw $e;
             }
+            try {
+                $tmpFile = tempnam('./', 'TMP');
+                $err = copy('./Default_pfp.jpg', $tmpFile);
+
+                $image = file_get_contents($tmpFile);
+
+                $actualUser = $db->query("SELECT UserId from users WHERE Email='$email'")->fetch_assoc();
+
+                $addPhoto = $db->prepare("INSERT INTO `users_photo` (`UserId`, `Image`) VALUES (?,?);");
+                $addPhoto->bind_param("ss", $actualUser["UserId"], $image);
+                echo $actualUser["UserId"];
+                $addPhoto->execute();
+                echo "Photo ajouté avec succès !";
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+
         }
 
     } else {
