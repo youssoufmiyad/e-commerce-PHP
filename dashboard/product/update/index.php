@@ -4,26 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create product</title>
+    <title>update product</title>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <?php
-require_once('../../connect.php');
+// Import de la connection à la database sous la forme de la variable "$db"
+require_once('../../../utils/connect.php');
 
 ?>
 <?php
+// Envoi du formulaire de création d'un produit
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Vérification du remplissage des champs coté serveur
     if (isset($_POST['product-id']) && isset($_POST['product-name']) && isset($_POST['price']) && isset($_POST['vendor']) && isset($_POST['quantity'])) {
         $name = $_POST['product-name'];
         $price = $_POST['price'];
         $vendor = $_POST['vendor'];
         $quantity = $_POST['quantity'];
         $id = $_POST['product-id'];
-        $result = $db->query('SELECT * FROM products WHERE ProductId=' . $id . ';');
+        $produits = $db->query('SELECT * FROM products WHERE ProductId=' . $id . ';');
 
-
+        // Requête de modification du produit existant à la base de données
         $postQuery = $db->prepare("UPDATE `products` SET `Name`=?, `Price`=?, `Vendor`=?, `Quantity`=? WHERE `ProductId`=?;");
         $postQuery->bind_param("sssss", $name, $price, $vendor, $quantity, $id);
+
         try {
             $postQuery->execute();
             echo "Produit modifié avec succès !";
@@ -31,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             throw $e;
         }
     } else {
-        throw new Exception("Post params empty", 1);
+        throw new Exception("form incomplet", 1);
 
     }
 }
@@ -41,12 +45,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
     <div class="navbar">
         <ul>
-            <li><a href="./create">Enregistrer un nouveau produit</a></li>
+            <li><a href="../create">Enregistrer un nouveau produit</a></li>
             <li><a href="../">Voir les produit</a></li>
-            <li><a href="./update">Modifier un produit existant</a></li>
-            <li><a href="./delete">Supprimer un produit</a></li>
+            <li><a href="./">Modifier un produit existant</a></li>
+            <li><a href="../delete">Supprimer un produit</a></li>
         </ul>
     </div>
+    <?php
+    $produits = $db->query('SELECT * FROM products');
+    if ($produits->num_rows > 0) {
+        foreach ($produits as $produit) {
+            ?>
+            <tr>
+                <td>
+                    <?= $produit['ProductId'] ?>
+                </td>
+                <td>
+                    <?= $produit['Name'] ?>
+                </td>
+                <td>
+                    <?= $produit['Price'] ?>
+                </td>
+                <td>
+                    <?= $produit['Vendor'] ?>
+                </td>
+            </tr>
+            <br>
+            <?php
+        }
+    } ?>
     <div>
         <span>Modification d'un produit</span>
         <form method="post">
@@ -75,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 placeholder="combien :">
             <br>
 
-            <button>test style bouton</button>
+            <button>MODIFIER</button>
         </form>
     </div>
 </body>

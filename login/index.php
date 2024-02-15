@@ -1,10 +1,16 @@
+<!-- prise d'information sur la section actuelle -->
+<?php session_start(); ?>
+
 <!DOCTYPE html>
+
 <?php
-require_once("../dashboard/connect.php");
-?>
-<?php
+// Import de la connection à la database sous la forme de la variable "$db"
+require_once("../utils/connect.php");
+
+// Envoi du formulaire de connection
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
+        // Requête de sélection des utilisateurs à des fins d'identification
         $users = $db->query(
             "SELECT * FROM users"
         );
@@ -12,15 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         throw $e;
     }
 
+    // Vérification du remplissage des champs coté serveur
     if (isset($_POST['form-email']) && isset($_POST['form-password'])) {
         $email = $_POST['form-email'];
         $password = $_POST['form-password'];
 
         if ($users->num_rows > 0) {
             while ($row = $users->fetch_assoc()) {
+                // Authentification
                 if ($row["Email"] === $email & password_verify($password, $row["Passwd"])) {
                     try {
-                        session_start();
 
                         $_SESSION["user"] = array(
                             "userId" => $row["UserId"],
@@ -37,9 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 } else {
                     echo "<div class=\"login-error\">adresse mail ou mot de passe incorrect</div>";
-
                 }
-
             }
         }
     }
@@ -50,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>login</title>
 </head>
 
 

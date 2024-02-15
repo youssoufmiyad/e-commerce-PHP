@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <?php
-require_once('../connect.php');
+// Import de la connection à la database sous la forme de la variable "$db"
+require_once('../../utils/connect.php');
 
 ?>
-
-
-
 
 <body>
     <div class="navbar">
@@ -26,35 +24,28 @@ require_once('../connect.php');
     </div>
 
     <?php
-    $method = $_SERVER['REQUEST_METHOD'];
-    switch ($method) {
-        case 'GET':
-            $result = $db->query('SELECT * FROM products');
-            if ($result->num_rows > 0) {
-                foreach ($result as $produit) {
-                    ?>
-                    <tr>
-                        <td>
-                            <?= $produit['ProductId'] ?>
-                        </td>
-                        <td>
-                            <?= $produit['Name'] ?>
-                        </td>
-                        <td>
-                            <?= $produit['Price'] ?>
-                        </td>
-                        <td>
-                            <?= $produit['Vendor'] ?>
-                        </td>
-                    </tr>
-                    <br>
-                    <?php
-                }
-            }
-            break;
-        case 'PUT':
-
-            break;
+    // Requête de selection des produit à la base de données
+    $result = $db->query('SELECT * FROM products');
+    if ($result->num_rows > 0) {
+        foreach ($result as $produit) {
+            ?>
+            <tr>
+                <td>
+                    <?= $produit['ProductId'] ?>
+                </td>
+                <td>
+                    <?= $produit['Name'] ?>
+                </td>
+                <td>
+                    <?= $produit['Price'] ?>
+                </td>
+                <td>
+                    <?= $produit['Vendor'] ?>
+                </td>
+            </tr>
+            <br>
+            <?php
+        }
     }
     ?>
 </body>
