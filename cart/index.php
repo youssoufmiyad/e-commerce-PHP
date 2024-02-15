@@ -1,4 +1,5 @@
 <?php
+// prise d'information sur la section actuelle
 session_start();
 ?>
 <!DOCTYPE html>
@@ -10,15 +11,19 @@ session_start();
     <title>Cart</title>
 </head>
 <?php
-require_once('../dashboard/connect.php');
+// Import de la connection à la database sous la forme de la variable "$db"
+require_once('../utils/connect.php');
 ?>
 
 <body>
     <?php
+    // Test si l'utilisateur est connecté
     if (@$_SESSION["user"]) {
         $products = $db->query('SELECT * FROM cart WHERE UserId=' . $_SESSION["user"]["userId"] . ';');
+        // Test si l'utilisateur a ajouté des éléments au panier
         if ($products->num_rows > 0) {
             ?>
+            <!-- Affichage de chaque produit -->
             <div class="product-list">
                 <?php
                 foreach ($products as $produit) {

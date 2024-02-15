@@ -1,3 +1,4 @@
+<!-- prise d'information sur la section actuelle -->
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -5,12 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dashboard</title>
+    <title>profil</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<?php
-require_once('../dashboard/connect.php');
 
+<?php
+// Import de la connection à la database sous la forme de la variable "$db"
+require_once('../utils/connect.php');
 ?>
 
 <body>
@@ -25,11 +27,10 @@ require_once('../dashboard/connect.php');
         throw $th;
     }
 
-    echo $src;
-
-    $user = $db->query('SELECT * FROM users WHERE UserId=' . $_SESSION["user"]["userId"] . '')->fetch_assoc();
     ?>
+    <!-- photo de profil -->
     <img src="<?php echo $src ?>" alt="pfp" width="360px" height="360px">
+    <!-- prénom NOM -->
     <div class="user-name">
         <?php echo $_SESSION["user"]["lastName"] . " " . $_SESSION["user"]["firstName"] ?>
     </div>

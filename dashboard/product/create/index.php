@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <?php
-require_once('../../connect.php');
+// Import de la connection à la database sous la forme de la variable "$db"
+require_once('../../../utils/connect.php');
 
 ?>
 <?php
+// Envoi du formulaire de création d'un produit
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Vérification du remplissage des champs coté serveur
     if (!empty($_POST['product-name']) && !empty($_POST['price']) && !empty($_POST['vendor']) && !empty($_POST['quantity']) && !empty($_FILES['productImage'])) {
         $name = $_POST['product-name'];
         $price = $_POST['price'];
@@ -20,15 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $quantity = $_POST['quantity'];
         $image = file_get_contents($_FILES['productImage']['tmp_name']);
 
+        // Requête d'insert du produit à la base de données
         $postQuery = $db->prepare("INSERT INTO `products` (`Name`, `Price`, `Vendor`, `Quantity`) VALUES (?,?,?,?);");
         $postQuery->bind_param("ssss", $name, $price, $vendor, $quantity);
+
         try {
+            // Execution de la requête
             $postQuery->execute();
             echo "Produit ajouté avec succès !";
-            $result = $db->query("SELECT ProductId from products WHERE Name='$name' AND Price=$price AND Vendor='$vendor' AND Quantity='$quantity'");
 
+            // Selection de l'ID du produit que l'on vient d'introduire, cette information servira pour l'ajout de l'image
+            $result = $db->query("SELECT ProductId from products WHERE Name='$name' AND Price=$price AND Vendor='$vendor' AND Quantity='$quantity'");
             $actualProduct = $result->fetch_assoc();
 
+            // Requête d'insert du produit à la base de données
             $addPhoto = $db->prepare("INSERT INTO `products_photo` (`ProductId`, `Image`) VALUES (?,?);");
             $addPhoto->bind_param("ss", $actualProduct["ProductId"], $image);
             $addPhoto->execute();
@@ -48,10 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
     <div class="navbar">
         <ul>
-            <li><a href="./create">Enregistrer un nouveau produit</a></li>
+            <li><a href="./">Enregistrer un nouveau produit</a></li>
             <li><a href="../">Voir les produit</a></li>
-            <li><a href="./update">Modifier un produit existant</a></li>
-            <li><a href="./delete">Supprimer un produit</a></li>
+            <li><a href="../update">Modifier un produit existant</a></li>
+            <li><a href="../delete">Supprimer un produit</a></li>
         </ul>
     </div>
     <div>

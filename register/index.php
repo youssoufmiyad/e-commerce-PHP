@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <?php
-require_once("../dashboard/connect.php");
+// Import de la connection à la database sous la forme de la variable "$db"
+require_once("../utils/connect.php");
 
+// Regex du mot de passe, il doit contenir :
+// - 1 caractère spécial
+// - 1 lettre majuscule
+// - 1 lettre minuscule
+// - 1 chiffre
+// - 8 caractère minimum
 $PASSWORD_REGEXP = "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$^";
 
+// Envoi du formulaire de création d'un utilisateur
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Vérification du remplissage des champs coté serveur
     if (!empty($_POST['form-email']) && !empty($_POST['form-password']) && !empty($_POST['form-confirmPWD']) && !empty($_POST['form-firstname']) && !empty($_POST['form-lastname'])) {
         $lastname = $_POST['form-lastname'];
         $firstname = $_POST['form-firstname'];
         $email = $_POST['form-email'];
         $password = password_hash($_POST['form-password'], PASSWORD_DEFAULT);
         $confirm_password = password_verify($_POST['form-confirmPWD'], $password);
+
+        // Vérification de la validité de l'email
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo "Invalid email format";
-        } else if (!filter_var($_POST['form-password'], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $PASSWORD_REGEXP)))) {
+        }
+        // Vérification de la validité du mot de passe selon le regex
+        else if (!filter_var($_POST['form-password'], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $PASSWORD_REGEXP)))) {
             echo "invalid password";
-        } else if (!$confirm_password) {
+        }
+        // Vérification de la correspondance entre le mot de passe et sa confirmation
+        else if (!$confirm_password) {
             echo "Les mot de passe ne corresspondent pas";
         } else {
+            // Requête d'insert de l'utilisateur à la base de données
             $postQuery = $db->prepare("INSERT INTO `users` (`Lastname`, `Firstname`, `Email`, `Passwd`) VALUES (?,?,?,?);");
             $postQuery->bind_param("ssss", $lastname, $firstname, $email, $password);
             try {
@@ -26,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } catch (Exception $e) {
                 throw $e;
             }
+
+            // attribution de la photo de profil par défaut
             try {
                 $tmpFile = tempnam('./', 'TMP');
                 $err = copy('./Default_pfp.jpg', $tmpFile);
@@ -55,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>register</title>
 </head>
 
 <body>
