@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Import de la connection à la database sous la forme de la variable "$db"
 require_once('../../utils/connect.php'); ?>
 
@@ -44,13 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <body>
     <span>Informations du compte</span>
-    <form method="post">
+    <form method="post" action="change-info.php">
         <label for="form-lastname">Last name:</label><br>
-        <input type="text" id="form-lastname" name="form-lastname"><br><br>
+        <input type="text" id="form-lastname" name="form-lastname" value=<?php echo $_SESSION["user"]["lastName"] ?>><br><br>
         <label for="form-firstname">First name:</label><br>
-        <input type="text" id="form-firstname" name="form-firstname"><br>
+        <input type="text" id="form-firstname" name="form-firstname" value=<?php echo $_SESSION["user"]["firstName"] ?>><br>
         <label for="form-email">Email:</label><br>
-        <input type="text" id="form-email" name="form-email"><br><br>
+        <input type="text" id="form-email" name="form-email" value=<?php echo $_SESSION["user"]["email"] ?>><br><br>
+        <input type="submit" value="Submit">
     </form>
 
     <span>Mot de passe</span>
