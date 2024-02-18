@@ -107,6 +107,7 @@ CREATE TABLE `products` (
   `Name` varchar(50) DEFAULT NULL,
   `Price` float DEFAULT NULL,
   `Vendor` varchar(20) DEFAULT NULL,
+  `UserId` int(11) DEFAULT NULL,
   `Quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
