@@ -32,6 +32,12 @@ require_once("../../utils/connect.php")
                     <div class="card-expiration">
                         <?= $payment_method['ExpirationDate'] ?>
                     </div>
+                    <button type="button">Modify</button>
+                    <form action="delete.php" method="post">
+                        <input type="text" name="card-number" id="card-number" value=<?php echo $payment_method['CardNumber']?> hidden>
+                        <input type="submit" value="Delete">
+                    </form>
+                    
 
                 </div>
                 <br>
