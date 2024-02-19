@@ -46,6 +46,10 @@ require_once('../../utils/connect.php');
             ?>
         </div>
         <?php
+    }else{
+        ?>
+        <h1>Vous n'avez aucun produit</h1>
+        <?php
     }
     ?>
 
