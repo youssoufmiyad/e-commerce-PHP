@@ -1,18 +1,31 @@
+body {
+    margin: 0px;
+}
 .title {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.login-page {
+    height: 100%;
+  background-image: url("../assets/polly-background-1631651.jpg");
+  display: flex;
+  flex-direction: row;
+}
+
 .login-form-container {
+  background-color: white;
   margin-top: 32px;
+  margin-bottom: 18px;
   width: 50%;
   height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px black solid;
-  border-radius: 30px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
 .login-form {
@@ -26,7 +39,7 @@
   width: 240px;
   padding: 15px;
   padding-left: 60px;
-  background: url("../assets/user-icon.png") no-repeat 15px #F3F1FF;
+  background: url("../assets/user-icon.png") no-repeat 15px #f3f1ff;
   background-size: 20px;
   border-radius: 20px;
   border-width: 0px;
@@ -36,7 +49,7 @@
   width: 240px;
   padding: 15px;
   padding-left: 60px;
-  background: url("../assets/padlock-icon.png") no-repeat 15px #F3F1FF;
+  background: url("../assets/padlock-icon.png") no-repeat 15px #f3f1ff;
   background-size: 20px;
   border-radius: 20px;
   border-width: 0px;
@@ -53,19 +66,43 @@
 
 .form-button:hover {
   background-image: none;
-  background-color: #ACA1F1;
+  background-color: #aca1f1;
   cursor: pointer;
 }
 
-.form-title{
-    font-size: 28px;
-    font-weight: bold;
+.form-title {
+  font-size: 28px;
+  font-weight: bold;
 }
 
-.form-subtitle{
-    font-size: 16px;
+.form-subtitle {
+  font-size: 16px;
 }
 
+.login-presentation-container {
+  margin-top: 104px;
+  margin-left: 72px;
+  width: 25%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px black solid;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.login-presentation {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.login-presentation-text {
+  color: white;
+  font-size: 24px;
+  line-height: 32px;
+}
 .navbar {
 }
 

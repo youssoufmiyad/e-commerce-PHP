@@ -63,20 +63,31 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <body>
     <?php require_once('../navbar.php'); ?>
-    <div class="login-form-container">
+    <div class="login-page">
+        <div class="login-form-container">
 
-        <div class="login-form">
-            <span class="form-title">CONNEXION</span><br><br>
-            <span class="form-subtitle">Découvrez l'élégance et le "Prestige" chez nous.</span><br><br>
-            <form method="post">
-                <input type="text" class="form-email" id="form-email" name="form-email"
-                    placeholder="Entrez votre mail"><br><br>
+            <div class="login-form">
+                <span class="form-title">CONNEXION</span><br><br>
+                <span class="form-subtitle">Découvrez l'élégance et le "Prestige" chez nous.</span><br><br>
+                <form method="post">
+                    <input type="text" class="form-email" id="form-email" name="form-email"
+                        placeholder="Entrez votre mail"><br><br>
 
-                <input type="password" class="form-password" id="form-password" name="form-password"
-                    placeholder="Mot de passe"><br><br>
+                    <input type="password" class="form-password" id="form-password" name="form-password"
+                        placeholder="Mot de passe"><br><br>
 
-                <button class="form-button">Connexion</button>
-            </form>
+                    <button class="form-button">Connexion</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="login-presentation-container">
+
+            <div class="login-presentation">
+                <span class="login-presentation-text">Connectez-vous pour explorer l'exclusivité. Avec "Prestige",
+                    découvrez l'art de l'horlogerie de luxe, où chque montre raconte une histoire d'élégance
+                    intemporelle</span><br><br>
+            </div>
         </div>
     </div>
 
