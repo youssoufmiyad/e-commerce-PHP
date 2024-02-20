@@ -1,8 +1,18 @@
-body{
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.navbar {
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  margin: 4px;
+  display: inline;
 }

@@ -8,6 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style><?php include("../CSS/main.css") ?></style>
     <title>order history</title>
 </head>
 <?php
@@ -16,6 +17,7 @@ require_once('../utils/connect.php');
 ?>
 
 <body>
+    <?php require_once('../navbar.php'); ?>
     <?php
     // Test si l'utilisateur est connecté
     if (@$_SESSION["user"]) {
@@ -51,10 +53,10 @@ require_once('../utils/connect.php');
                     <?php
                 }
 
-        }else{
+        } else {
             echo "<h1>Vous n'avez passez aucune commande</h1>";
         }
-        
+
     } else {
         echo "connectez vous pour voir votre historique de commande";
     }

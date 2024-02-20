@@ -7,9 +7,10 @@ function productDetailTemplate($file, $name, $price, $vendor, $quantity, $image)
         <meta charset=\"UTF-8\">
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>$name</title>
-        <link rel=\"stylesheet\" href=\"../../CSS/main.css\">
+        <style><?php include(\"../../CSS/main.css\") ?></style>
     </head>
     <body>
+    <?php require_once('../../navbar.php'); ?>
         <div class=\"product-name\" >$name</div>
         <div class=\"product-price\">$price €</div>
         <div class=\"product-vendor\">$vendor </div>

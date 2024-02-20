@@ -8,10 +8,12 @@ require_once("../../utils/connect.php")
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style><?php include("../../CSS/main.css") ?></style>
     <title>payment payment_methods</title>
 </head>
 
 <body>
+<?php require_once('../../navbar.php'); ?>
     <?php
     // Requête de selection du payment_method à la base de données
     $payment_methods = $db->query('SELECT * FROM payment WHERE UserId ='.$_SESSION["user"]["userId"]);

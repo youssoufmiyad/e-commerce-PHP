@@ -73,10 +73,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style><?php include("../CSS/main.css") ?></style>
     <title>register</title>
 </head>
 
 <body>
+<?php require_once('../navbar.php'); ?>
     <form method="post">
         <label for="form-lastname">Last name:</label><br>
         <input type="text" id="form-lastname" name="form-lastname"><br><br>

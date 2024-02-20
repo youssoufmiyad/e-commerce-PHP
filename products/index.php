@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>products</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <style><?php include("../CSS/main.css") ?></style>
 </head>
 
 <?php
@@ -14,6 +14,7 @@ require_once('../utils/connect.php');
 ?>
 
 <body>
+    <?php require_once('../navbar.php'); ?>
     <?php
     // Requête de selection du produit à la base de données
     $produits = $db->query('SELECT * FROM products');

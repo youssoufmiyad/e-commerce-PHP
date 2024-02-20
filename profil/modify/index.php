@@ -9,6 +9,7 @@ require_once('../../utils/connect.php'); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style><?php include("../../CSS/main.css") ?></style>
     <title>modify</title>
 </head>
 
@@ -44,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 <body>
+<?php require_once('../../navbar.php'); ?>
     <span>Informations du compte</span>
     <form method="post" action="change-info.php">
         <label for="form-lastname">Last name:</label><br>
@@ -52,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <input type="text" id="form-firstname" name="form-firstname" value=<?php echo $_SESSION["user"]["firstName"] ?>><br>
         <label for="form-email">Email:</label><br>
         <input type="text" id="form-email" name="form-email" value=<?php echo $_SESSION["user"]["email"] ?>><br><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit"><br><br>
     </form>
 
     <span>Mot de passe</span>

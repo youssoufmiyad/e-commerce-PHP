@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>add product</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <style><?php include("../../CSS/main.css") ?></style>
 </head>
 <?php
 // Import de la connection à la database sous la forme de la variable "$db"
@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 ?>
 
 <body>
+<?php require_once('../../navbar.php'); ?>
     <div>
         <span>Ajout d'un produit</span>
         <form method="post" enctype="multipart/form-data">

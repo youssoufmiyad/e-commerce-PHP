@@ -8,11 +8,12 @@ require_once("../../utils/connect.php")
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style><?php include("../../CSS/main.css") ?></style>
     <title>adresses</title>
 </head>
 
 <body>
-
+    <?php require_once('../../navbar.php'); ?>
     <?php
     // Requête de selection du adresse à la base de données
     $adresses = $db->query('SELECT * FROM adresses WHERE UserId =' . $_SESSION["user"]["userId"]);
@@ -37,7 +38,8 @@ require_once("../../utils/connect.php")
                         <?= $adresse['PostalCode'] ?>
                     </div>
                     <form action="modify adress" method="GET">
-                        <input type="text" name="form-adress-id" id="form-adress-id" value="<?php echo $adresse['AdressId'] ?>" hidden>
+                        <input type="text" name="form-adress-id" id="form-adress-id" value="<?php echo $adresse['AdressId'] ?>"
+                            hidden>
                         <input type="text" name="form-adress-country" value="<?= $adresse['Country'] ?>" hidden>
                         <input type="text" name="form-adress-street" value="<?= $adresse['Street'] ?>" hidden>
                         <input type="text" name="form-adress-city" value="<?= $adresse['City'] ?>" hidden>

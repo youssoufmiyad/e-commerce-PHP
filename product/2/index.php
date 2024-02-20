@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>so</title>
-        <link rel="stylesheet" href="../../CSS/main.css">
+        <style><?php include("../../CSS/main.css") ?></style>
     </head>
     <body>
+    <?php require_once('../../navbar.php'); ?>
         <div class="product-name" >so</div>
         <div class="product-price">29 €</div>
         <div class="product-vendor">10 </div>

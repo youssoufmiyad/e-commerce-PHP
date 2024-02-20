@@ -7,8 +7,11 @@ session_start();
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-commerce PHP</title>
-    <link rel="stylesheet" href="CSS/main.css" type="text/css">
+    <!-- import CSS -->
+    <style><?php include("CSS/main.css") ?></style>
 </head>
 
 <?php
@@ -16,6 +19,7 @@ session_start();
 require_once('utils/generate_product_page.php'); ?>
 
 <body>
+    <?php require_once('navbar.php'); ?>
     <!-- bouton de déconnexion (à mettre dans la navbar une fois faite) -->
     <form action="utils/disconnect.php">
         <input type="submit" name="disconnect" value="disconnect" />
@@ -36,4 +40,3 @@ require_once('utils/generate_product_page.php'); ?>
 </body>
 
 </html>
-

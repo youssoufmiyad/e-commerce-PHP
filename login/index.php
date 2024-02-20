@@ -42,10 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         throw $th;
                     }
 
-                } else {
-                    echo "<div class=\"login-error\">adresse mail ou mot de passe incorrect</div>";
                 }
             }
+            echo "<div class=\"login-error\">adresse mail ou mot de passe incorrect</div>";
         }
     }
 }
@@ -55,11 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style><?php include("../CSS/main.css") ?></style>
     <title>login</title>
 </head>
 
 
 <body>
+    <?php require_once('../navbar.php'); ?>
     <div>
         <form method="post">
             <label for="form-email">Email:</label><br>
