@@ -54,23 +54,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include("../CSS/main.css") ?></style>
+    <style>
+        <?php include("../CSS/main.css") ?>
+    </style>
     <title>login</title>
 </head>
 
 
 <body>
     <?php require_once('../navbar.php'); ?>
-    <div>
-        <form method="post">
-            <label for="form-email">Email:</label><br>
-            <input type="text" id="form-email" name="form-email"><br>
+    <div class="login-form-container">
 
-            <label for="form-password">Password:</label><br>
-            <input type="password" id="form-password" name="form-password"><br>
+        <div class="login-form">
+            <span class="form-title">CONNEXION</span><br><br>
+            <span class="form-subtitle">Découvrez l'élégance et le "Prestige" chez nous.</span><br><br>
+            <form method="post">
+                <input type="text" class="form-email" id="form-email" name="form-email"
+                    placeholder="Entrez votre mail"><br><br>
 
-            <button>submit</button>
-        </form>
+                <input type="password" class="form-password" id="form-password" name="form-password"
+                    placeholder="Mot de passe"><br><br>
+
+                <button class="form-button">Connexion</button>
+            </form>
+        </div>
     </div>
 
 </body>

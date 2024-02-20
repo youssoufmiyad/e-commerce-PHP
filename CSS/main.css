@@ -4,6 +4,68 @@
   align-items: center;
 }
 
+.login-form-container {
+  margin-top: 32px;
+  width: 50%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px black solid;
+  border-radius: 30px;
+}
+
+.login-form {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50%;
+}
+
+.form-email {
+  width: 240px;
+  padding: 15px;
+  padding-left: 60px;
+  background: url("../assets/user-icon.png") no-repeat 15px #F3F1FF;
+  background-size: 20px;
+  border-radius: 20px;
+  border-width: 0px;
+}
+
+.form-password {
+  width: 240px;
+  padding: 15px;
+  padding-left: 60px;
+  background: url("../assets/padlock-icon.png") no-repeat 15px #F3F1FF;
+  background-size: 20px;
+  border-radius: 20px;
+  border-width: 0px;
+}
+
+.form-button {
+  width: 120px;
+  padding: 16px;
+  background: url("../assets/button-gradient.png");
+  border-radius: 20px;
+  color: white;
+  border-width: 0px;
+}
+
+.form-button:hover {
+  background-image: none;
+  background-color: #ACA1F1;
+  cursor: pointer;
+}
+
+.form-title{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.form-subtitle{
+    font-size: 16px;
+}
+
 .navbar {
 }
 
