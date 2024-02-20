@@ -87,7 +87,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px black solid;
+  border: 1px #ABA7C4 solid;
   border-radius: 30px;
   backdrop-filter: blur(10px);
 }
