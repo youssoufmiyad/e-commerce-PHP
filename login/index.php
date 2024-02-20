@@ -62,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 <body>
-    <?php require_once('../navbar.php'); ?>
     <div class="login-page">
         <div class="login-form-container">
 
