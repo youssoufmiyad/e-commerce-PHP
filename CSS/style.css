@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to right, #021b79, #0575e6);
+  font-family: "Open Sans", sans-serif;
+  color: red;
+}
+
+.logo {
+  max-height: 160px;
+}
+
+.nav {
+  margin-bottom: 2px;
+  justify-content: flex-end;
+}
+
+.right-menu {
+  display: flex;
+}
+
+.nav-link {
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.nav-link.active {
+  padding-bottom: 5px;
+  border: 1px white solid;
+  border-radius: 5px;
+}
+
+.nav-link.btn {
+  background-color: #000;
+  border-radius: 20px;
+  color: white;
+  padding: 5px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link.btn:hover {
+  background-color: #fff;
+  border-radius: 20px;
+  color: black !important;
+  padding: 5px 20px;
+  transition: background-color 0.3s ease;
+}
+.nav-link:hover {
+  color: black;
+}
+
+.col-md-6 {
+  flex: wrap;
+}
+
+main {
+  padding: 2em 0;
+  margin-bottom: 0rem !important;
+}
+
+h1 {
+  margin-bottom: 0.5em;
+  color: #fff;
+}
+
+.tagline {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  color: lightgrey;
+  font-weight: bold;
+}
+
+.Bienvenue {
+  color: #fff;
+}
+
+.price-tag {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: #fff;
+}
+
+.pb-5,
+.py-5 {
+  padding-bottom: 0px !important;
+}
+.pt-5,
+.py-5 {
+  padding-top: 0px !important;
+}
+
+.carousel-controls {
+  /* margin-top: 2em; */
+  display: flex;
+}
+
+.carousel-controls .btn {
+  font-size: 2em;
+  color: #000;
+  background-color: transparent;
+  border: none;
+  transition: color 0.3s ease;
+}
+
+.carousel-controls .btn:hover {
+  color: #555;
+}
+
+/* Bootstrap overrides */
+.container {
+  max-width: 960px; /*largeur */
+}
+
+.row {
+  align-items: center; /* Centre vertical colonnes */
+}
+
+/* Style pour l'image de la moto */
+.img-fluid {
+  max-width: 100%; /* Pour s'assurer que l'image est responsive */
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  /* pour les écrans plus petits */
+  .nav-link.btn {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+  }
+}

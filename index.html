@@ -4,46 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prestige</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link href="/CSS/style.css" rel="stylesheet" />
     <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        <div class="navbar-logo">
-          <a href="/index.html"
-            ><img
-              src="/assets/img/Capture d'écran 2024-02-12 145337.png"
-              alt="Logo Prestige"
-          /></a>
+    <div class="container">
+      <header>
+        <nav class="navbar">
+          <img
+            class="logo"
+            src="/assets/img/Capture d'écran 2024-02-12 145337.png"
+            alt="Logo Y’Cross"
+            class="logo"
+          />
+          <div class="right-menu">
+            <a class="nav-link" href="#">Shop</a>
+            <a class="nav-link" href="#">Marques</a>
+            <a class="nav-link" href="#">Nous contacter</a>
+            <a class="nav-link btn btn-dark text-white" href="#">Connexion</a>
+          </div>
+        </nav>
+      </header>
+
+      <div class="row my-5 py-5">
+        <div class="col-md-6">
+          <h1>Montre Exclusif</h1>
+          <p class="tagline">Choisissez le Luxe, Choisissez Nous.</p>
+          <p class="Bienvenue">
+            Découvrez la Montre Parfaite pour Chaque Occasion et Élevez Votre
+            Style avec une Élégance Intemporelle et un Savoir-Faire de
+            Précision.
+          </p>
+          <div class="price-tag mb-4">
+            <span class="price">$9.200</span>
+          </div>
         </div>
-        <div class="navbar-links">
-          <a href="#shop">Shop</a>
-          <a href="#marques">Marques</a>
-          <a href="#contact">Nous contacter</a>
-          <a href="#conexion"
-            ><button type="button" class="btn btn-dark">Connexion</button></a
-          >
+        <div class="col-md-6">
+          <div class="carousel-controls">
+            <button class="btn btn-light"><</button>
+            <img
+              src="/assets/img/watches/Watches.png"
+              alt="YZF 2024"
+              class="img-fluid"
+            />
+            <button class="btn btn-light">></button>
+          </div>
         </div>
-      </nav>
-    </header>
-    <main>
-      <section>
-        <h1>Montre Exclusif</h1>
-        <p>Choisissez le Luxe, Choisissez Nous.</p>
-        <p>
-          Découvrez la Montre Parfaite pour Chaque Occasion et Élevez Votre
-          Style avec une Élégance Intemporelle et un Savoir-Faire de Précision.
-        </p>
-        <span class="price">$30.000</span>
-        <div class="product-navigation">
-          <button>Précédent</button>
-          <button>Suivant</button>
-        </div>
-      </section>
-    </main>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>
