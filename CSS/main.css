@@ -1,6 +1,27 @@
 body {
-    margin: 0px;
+  margin: 0px;
 }
+
+.landing-page-green {
+  background: rgb(48, 163, 87);
+  background: linear-gradient(
+    90deg,
+    rgba(48, 163, 87, 1) 0%,
+    rgba(117, 227, 154, 1) 100%
+  );
+  transition: background-color 2s ease;
+}
+
+.landing-page-grey {
+  background: rgb(173, 176, 176);
+  background: linear-gradient(
+    90deg,
+    rgba(173, 176, 176, 1) 0%,
+    rgba(225, 225, 225, 1) 100%
+  );
+  transition: background-color 2s ease;
+}
+
 .title {
   display: flex;
   justify-content: center;
@@ -8,8 +29,14 @@ body {
 }
 
 .login-page {
-    height: 100%;
-  background-image: url("../assets/polly-background-1631651.jpg");
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(117, 227, 154, 1) 100%
+  ),url("../assets/login-background.png") no-repeat;
+  transition: background-color 2s ease;
   display: flex;
   flex-direction: row;
 }
@@ -87,7 +114,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px #ABA7C4 solid;
+  border: 1px #aba7c4 solid;
   border-radius: 30px;
   backdrop-filter: blur(10px);
 }
