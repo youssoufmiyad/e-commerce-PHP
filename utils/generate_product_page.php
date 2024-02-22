@@ -24,7 +24,7 @@ if ($products->num_rows > 0) {
         $src = "data:image/jpeg;base64," . $base64img;
 
         // Ajout des données du produit dans la template
-        productDetailTemplate($file, $row["Name"], $row["Price"], $row["Vendor"], $row["Quantity"], $src);
+        productDetailTemplate($file, $row["Name"], $row["Price"], $row["Description"], $row["Vendor"], $row["Quantity"], $src);
 
         // Fermeture du fichier
         fclose($file);
