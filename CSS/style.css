@@ -5,13 +5,14 @@
 }
 
 body {
-  background: linear-gradient(to right, #021b79, #0575e6);
+  background: linear-gradient(to right, #adb0b0, #e1e1e1);
   font-family: "Open Sans", sans-serif;
   color: red;
 }
 
 .logo {
-  max-height: 160px;
+  max-height: 110px;
+  margin-top: 1rem;
 }
 
 .nav {
@@ -70,7 +71,7 @@ h1 {
 .tagline {
   font-size: 1.5em;
   margin-bottom: 1em;
-  color: lightgrey;
+  color: red;
   font-weight: bold;
 }
 
@@ -85,18 +86,32 @@ h1 {
   color: #fff;
 }
 
+.text-black {
+  color: black !important;
+}
 .pb-5,
 .py-5 {
-  padding-bottom: 0px !important;
+  padding-bottom: 0rem;
 }
+
 .pt-5,
 .py-5 {
-  padding-top: 0px !important;
+  padding-top: 0rem;
+}
+.mb-5,
+.my-5 {
+  margin-bottom: 0rem;
+}
+.mt-5,
+.my-5 {
+  margin-top: 0rem;
 }
 
 .carousel-controls {
   /* margin-top: 2em; */
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-controls .btn {
@@ -122,8 +137,24 @@ h1 {
 
 /* Style pour l'image de la moto */
 .img-fluid {
-  max-width: 100%; /* Pour s'assurer que l'image est responsive */
-  height: auto;
+  max-width: 80% !important;
+  /* height: auto; */
+}
+.rond {
+  background: rgba(208, 2, 27, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #000;
+  font-weight: bold;
+  border-radius: 50%;
+  height: 50px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 50px;
 }
 
 @media (max-width: 768px) {
