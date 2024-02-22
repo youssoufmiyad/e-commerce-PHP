@@ -66,6 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <?= $produit['Price'] ?>
                     </td>
                     <td>
+                        <?= $produit['Description'] ?>
+                    </td>
+                    <td>
                         <?= $produit['Vendor'] ?>
                     </td>
                 </tr>

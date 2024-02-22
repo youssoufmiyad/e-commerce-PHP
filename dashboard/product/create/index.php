@@ -16,16 +16,17 @@ require_once('../../../utils/connect.php');
 // Envoi du formulaire de création d'un produit
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Vérification du remplissage des champs coté serveur
-    if (!empty($_POST['product-name']) && !empty($_POST['price']) && !empty($_POST['vendor']) && !empty($_POST['quantity']) && !empty($_FILES['productImage'])) {
+    if (!empty($_POST['product-name']) && !empty($_POST['price']) && !empty($_POST['descritpion']) && !empty($_POST['vendor']) && !empty($_POST['quantity']) && !empty($_FILES['productImage'])) {
         $name = $_POST['product-name'];
         $price = $_POST['price'];
+        $description = $_POST['description'];
         $vendor = $_POST['vendor'];
         $quantity = $_POST['quantity'];
         $image = file_get_contents($_FILES['productImage']['tmp_name']);
 
         // Requête d'insert du produit à la base de données
-        $postQuery = $db->prepare("INSERT INTO `products` (`Name`, `Price`, `Vendor`, `Quantity`) VALUES (?,?,?,?);");
-        $postQuery->bind_param("ssss", $name, $price, $vendor, $quantity);
+        $postQuery = $db->prepare("INSERT INTO `products` (`Name`, `Price`,`Description` `Vendor`, `Quantity`) VALUES (?,?,?,?,?);");
+        $postQuery->bind_param("sssss", $name, $price, $description, $vendor, $quantity);
 
         try {
             // Execution de la requête
@@ -71,6 +72,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <label for="price">Prix :</label>
             <input type="number" step="any" name="price" id="price" placeholder="entrez un prix">
+            <br>
+
+            <label for="descritpion">Description :</label>
+            <input type="text" name="descritpion" id="descritpion" placeholder="entrez une descritpion">
             <br>
 
             <label for="vendor">Vendeur :</label>

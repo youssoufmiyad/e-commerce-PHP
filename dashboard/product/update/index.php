@@ -16,17 +16,18 @@ require_once('../../../utils/connect.php');
 // Envoi du formulaire de création d'un produit
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Vérification du remplissage des champs coté serveur
-    if (isset($_POST['product-id']) && isset($_POST['product-name']) && isset($_POST['price']) && isset($_POST['vendor']) && isset($_POST['quantity'])) {
+    if (!empty($_POST['product-id']) && !empty($_POST['product-name']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_POST['vendor']) && !empty($_POST['quantity'])) {
         $name = $_POST['product-name'];
         $price = $_POST['price'];
+        $description = $_POST['description'];
         $vendor = $_POST['vendor'];
         $quantity = $_POST['quantity'];
         $id = $_POST['product-id'];
         $produits = $db->query('SELECT * FROM products WHERE ProductId=' . $id . ';');
 
         // Requête de modification du produit existant à la base de données
-        $postQuery = $db->prepare("UPDATE `products` SET `Name`=?, `Price`=?, `Vendor`=?, `Quantity`=? WHERE `ProductId`=?;");
-        $postQuery->bind_param("sssss", $name, $price, $vendor, $quantity, $id);
+        $postQuery = $db->prepare("UPDATE `products` SET `Name`=?, `Price`=?, `Description`=?, `Vendor`=?, `Quantity`=? WHERE `ProductId`=?;");
+        $postQuery->bind_param("ssssss", $name, $price, $description, $vendor, $quantity, $id);
 
         try {
             $postQuery->execute();
@@ -67,6 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <?= $produit['Price'] ?>
                 </td>
                 <td>
+                    <?= $produit['Description'] ?>
+                </td>
+                <td>
                     <?= $produit['Vendor'] ?>
                 </td>
             </tr>
@@ -90,6 +94,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <label for="price">Prix :</label>
             <input type="number" step="any" name="price" id="price" value="<?= $result['Price'] ?>"
                 placeholder="entrez un prix">
+            <br>
+
+            <label for="description">Nom du produit :</label>
+            <input type="text" name="description" id="description" value="<?= $result['Description'] ?>"
+                placeholder="entrez un description">
             <br>
 
             <label for="vendor">Vendeur :</label>

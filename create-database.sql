@@ -106,6 +106,7 @@ CREATE TABLE `products` (
   `ProductId` int(11) NOT NULL,
   `Name` varchar(50) DEFAULT NULL,
   `Price` float DEFAULT NULL,
+  `Description` VARCHAR(255) NOT NULL,
   `Vendor` varchar(20) DEFAULT NULL,
   `UserId` int(11) DEFAULT NULL,
   `Quantity` int(11) NOT NULL
