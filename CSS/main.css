@@ -29,13 +29,14 @@ body {
 }
 
 .login-page {
+  font-family: "Poppins", sans-serif;
   height: 100%;
-
   background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(117, 227, 154, 1) 100%
-  ),url("../assets/login-background.png") no-repeat;
+      30deg,
+      rgba(80, 56, 237, 1) 0%,
+      rgba(0, 0, 0, 1) 100%      
+    ),
+    url("../assets/login-background.png") no-repeat;
   transition: background-color 2s ease;
   display: flex;
   flex-direction: row;
@@ -99,7 +100,7 @@ body {
 
 .form-title {
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .form-subtitle {
@@ -142,3 +143,4 @@ li {
   margin: 4px;
   display: inline;
 }
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
