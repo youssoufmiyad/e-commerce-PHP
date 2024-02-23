@@ -43,9 +43,9 @@ require_once('../utils/connect.php');
                             <span class="product-catagory">
                                 <?php if ($produit['Vendor'] !== "NULL") {
                                     echo $produit['Vendor'];
-                                }elseif ($produit['UserId'] !== "NULL"){
+                                } elseif ($produit['UserId'] !== "NULL") {
                                     echo $produit['UserId'];
-                                }else{
+                                } else {
                                     echo "error";
                                 } ?>
                             </span>
@@ -62,7 +62,16 @@ require_once('../utils/connect.php');
                                 <div class="product-links">
                                     <a href=""><img src="../assets/empty-heart-icon.png" alt="heart" width="64px"
                                             height="64px"></a>
-                                    <a href=""><img src="../assets/cart-icon.png" alt="cart" width="64px" height="64px"></a>
+                                    <form action="../product/add_to_cart.php" method="POST">
+                                        <input type="text" name="product-id" value=<?= $produit['ProductId'] ?> hidden>
+                                        <input type="text" name="product-name" value=<?= $produit['Name'] ?> hidden>
+                                        <input type="number" name="cart-quantity" value="1" hidden>
+                                        <button
+                                            style="border: none;cursor: pointer;appearance: none;background-color: inherit;"><img
+                                                src="../assets/cart-icon.png" alt="cart" width="64px" height="64px"></button>
+
+                                    </form>
+
                                 </div>
                             </div>
                         </div>

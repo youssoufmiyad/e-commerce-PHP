@@ -25,7 +25,8 @@ require_once('../utils/connect.php');
     <?php
     // Test si l'utilisateur est connecté
     if (@$_SESSION["user"]) {
-        $products = $db->query('SELECT * FROM cart WHERE UserId=' . $_SESSION["user"]["userId"] . ';');
+        $cartId = $db->query('SELECT * FROM cart WHERE UserId=' . $_SESSION["user"]["userId"] . ';')->fetch_assoc();
+        $products = $db->query('SELECT * FROM cart_items WHERE cartId=' . $cartId["CartId"] . ';');
         // Test si l'utilisateur a ajouté des éléments au panier
         if ($products->num_rows > 0) {
             ?>
@@ -50,9 +51,9 @@ require_once('../utils/connect.php');
                                                     $base64img = @base64_encode($image["Image"]);
                                                     $src = "data:image/jpeg;base64," . $base64img;
 
-                                                    $price = $db->query("SELECT Price FROM products WHERE ProductId=" . $produit['ProductId'] . ";");
-                                                    $price = $price->fetch_assoc();
-                                                    $price = $price["Price"];
+                                                    $product_item = $db->query("SELECT * FROM products WHERE ProductId=" . $produit['ProductId'] . ";");
+                                                    $product_item = $product_item->fetch_assoc();
+                                                    $price = $product_item["Price"];
                                                     ?>
                                                     <div class="product">
                                                         <div class="row">
@@ -65,7 +66,7 @@ require_once('../utils/connect.php');
                                                                         <div class="col-md-5 product-name">
                                                                             <div class="product-name">
                                                                                 <a href="#">
-                                                                                    <?= $produit['ProductName'] ?>
+                                                                                    <?= $product_item['Name'] ?>
                                                                                 </a>
                                                                                 <div class="product-info">
                                                                                     description
@@ -97,13 +98,13 @@ require_once('../utils/connect.php');
                                             <div class="summary">
                                                 <h3>Summary</h3>
                                                 <div class="summary-item"><span class="text">Subtotal</span><span
-                                                        class="price"><?=$produit["TotalPrice"]?>€</span></div>
+                                                        class="price"><?=$cartId["TotalPrice"]?>€</span></div>
                                                 <div class="summary-item"><span class="text">Discount</span><span
                                                         class="price">$0</span></div>
                                                 <div class="summary-item"><span class="text">Shipping</span><span
                                                         class="price">5€</span></div>
                                                 <div class="summary-item"><span class="text">Total</span><span
-                                                        class="price"><?=$produit["TotalPrice"]+5?>€</span></div>
+                                                        class="price"><?=$cartId["TotalPrice"]+5?>€</span></div>
                                                 <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
                                             </div>
                                         </div>
