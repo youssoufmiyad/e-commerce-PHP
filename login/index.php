@@ -1,10 +1,17 @@
+<!-- prise d'information sur la section actuelle -->
+
+<?php session_start(); ?>
+
 <!DOCTYPE html>
+
 <?php
-require_once("../dashboard/connect.php");
-?>
-<?php
+// Import de la connection à la database sous la forme de la variable "$db"
+require_once("../utils/connect.php");
+
+// Envoi du formulaire de connection
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
+        // Requête de sélection des utilisateurs à des fins d'identification
         $users = $db->query(
             "SELECT * FROM users"
         );
@@ -12,15 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         throw $e;
     }
 
+    // Vérification du remplissage des champs coté serveur
     if (isset($_POST['form-email']) && isset($_POST['form-password'])) {
         $email = $_POST['form-email'];
         $password = $_POST['form-password'];
 
         if ($users->num_rows > 0) {
             while ($row = $users->fetch_assoc()) {
+                // Authentification
                 if ($row["Email"] === $email & password_verify($password, $row["Passwd"])) {
                     try {
-                        session_start();
 
                         $_SESSION["user"] = array(
                             "userId" => $row["UserId"],
@@ -34,13 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     } catch (Exception $th) {
                         throw $th;
                     }
-
-                } else {
-                    echo "<div class=\"login-error\">adresse mail ou mot de passe incorrect</div>";
-
                 }
-
             }
+            echo "<div class=\"login-error\">adresse mail ou mot de passe incorrect</div>";
         }
     }
 }
@@ -50,23 +54,39 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <style>
+        <?php include("../CSS/main.css") ?>
+    </style>
+    <title>login</title>
 </head>
 
 
 <body>
-    <div>
-        <form method="post">
-            <label for="form-email">Email:</label><br>
-            <input type="text" id="form-email" name="form-email"><br>
+    <div class="login-page">
+        <div class="login-form-container">
 
-            <label for="form-password">Password:</label><br>
-            <input type="password" id="form-password" name="form-password"><br>
+            <div class="login-form">
+                <span class="form-title">CONNEXION</span><br><br>
+                <span class="form-subtitle">Découvrez l'élégance et le "Prestige" chez nous.</span><br><br>
+                <form method="post">
+                    <input type="text" class="form-email" id="form-email" name="form-email" placeholder="Entrez votre mail"><br><br>
 
-            <button>submit</button>
-        </form>
+                    <input type="password" class="form-password" id="form-password" name="form-password" placeholder="Mot de passe"><br><br>
+
+                    <button class="form-button">Connexion</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="login-presentation-container">
+
+            <div class="login-presentation">
+                <span class="login-presentation-text">Connectez-vous pour explorer l'exclusivité. Avec "Prestige",
+                    découvrez l'art de l'horlogerie de luxe, où chque montre raconte une histoire d'élégance
+                    intemporelle</span><br><br>
+            </div>
+        </div>
     </div>
 
 </body>
-
 </html>
