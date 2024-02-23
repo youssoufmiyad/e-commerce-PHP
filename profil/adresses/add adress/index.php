@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <option value="ES">Espagne</option>
             <option value="FR">France</option>
             <option value="GR">Greece</option>
-            <option value="UK">Royaume Uni</option>
+            <option value="GB">Royaume Uni</option>
         </select><br>
 
         <label for="form-adress-street">Rue:</label><br>

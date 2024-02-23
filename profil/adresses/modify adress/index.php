@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo "selected" ?>>France</option>
                 <option value="GR" <?php if ($_GET["form-adress-country"] === "GR")
                 echo "selected" ?>>Greece</option>
-                <option value="UK" <?php if ($_GET["form-adress-country"] === "UK")
+                <option value="GB" <?php if ($_GET["form-adress-country"] === "GB")
                 echo "selected" ?>>Royaume Uni</option>
             </select><br>
 
