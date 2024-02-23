@@ -5,9 +5,9 @@
 }
 
 body {
-  background: linear-gradient(to right, #adb0b0, #e1e1e1);
+  background: linear-gradient(to right, #30a357, #75e39a);
   font-family: "Open Sans", sans-serif;
-  color: red;
+  color: green;
 }
 
 .logo {
@@ -71,7 +71,7 @@ h1 {
 .tagline {
   font-size: 1.5em;
   margin-bottom: 1em;
-  color: red;
+  color: green;
   font-weight: bold;
 }
 
@@ -145,16 +145,16 @@ h1 {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  border-radius: 50%;
+  border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #fff;
   font-weight: bold;
+  border-radius: 50%;
   height: 50px;
-  width: 50px;
-  display: flex;
   justify-content: center;
+  display: flex;
   align-items: center;
-  text-decoration: none;
+  width: 50px;
 }
 
 @media (max-width: 768px) {

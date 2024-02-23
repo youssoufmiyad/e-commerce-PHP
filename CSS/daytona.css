@@ -5,9 +5,9 @@
 }
 
 body {
-  background: linear-gradient(to right, #adb0b0, #e1e1e1);
+  background: linear-gradient(to right, #192946, #5b2221);
   font-family: "Open Sans", sans-serif;
-  color: red;
+  color: goldenrod;
 }
 
 .logo {
@@ -36,7 +36,7 @@ body {
 }
 
 .nav-link.btn {
-  background-color: #000;
+  background-color: red;
   border-radius: 20px;
   color: white;
   padding: 5px 20px;
@@ -87,24 +87,7 @@ h1 {
 }
 
 .text-black {
-  color: black !important;
-}
-.pb-5,
-.py-5 {
-  padding-bottom: 0rem;
-}
-
-.pt-5,
-.py-5 {
-  padding-top: 0rem;
-}
-.mb-5,
-.my-5 {
-  margin-bottom: 0rem;
-}
-.mt-5,
-.my-5 {
-  margin-top: 0rem;
+  color: #cecdcc !important;
 }
 
 .carousel-controls {
@@ -137,7 +120,7 @@ h1 {
 
 /* Style pour l'image de la moto */
 .img-fluid {
-  max-width: 80% !important;
+  max-width: 85% !important;
   /* height: auto; */
 }
 .rond {
@@ -145,16 +128,16 @@ h1 {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  border-radius: 50%;
+  border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #fff;
   font-weight: bold;
-  height: 50px;
-  width: 50px;
-  display: flex;
+  border-radius: 50%;
+  height: 40px;
   justify-content: center;
+  display: flex;
   align-items: center;
-  text-decoration: none;
+  width: 40px;
 }
 
 @media (max-width: 768px) {
