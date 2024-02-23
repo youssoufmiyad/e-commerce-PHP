@@ -89,23 +89,6 @@ h1 {
 .text-black {
   color: black !important;
 }
-.pb-5,
-.py-5 {
-  padding-bottom: 0rem;
-}
-
-.pt-5,
-.py-5 {
-  padding-top: 0rem;
-}
-.mb-5,
-.my-5 {
-  margin-bottom: 0rem;
-}
-.mt-5,
-.my-5 {
-  margin-top: 0rem;
-}
 
 .carousel-controls {
   /* margin-top: 2em; */

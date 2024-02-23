@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to right, #adb0b0, #e1e1e1);
+  font-family: "Open Sans", sans-serif;
+  color: red;
+}
+
+h1{
+  padding-top: 1rem;
+}
+
+.logo {
+  max-height: 110px;
+  margin-top: 1rem;
+}
+
+.nav {
+  margin-bottom: 2px;
+  justify-content: flex-end;
+}
+
+.right-menu {
+  display: flex;
+}
+
+.nav-link {
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.nav-link.active {
+  padding-bottom: 5px;
+  border: 1px white solid;
+  border-radius: 5px;
+}
+
+.nav-link.btn {
+  background-color: #000;
+  border-radius: 20px;
+  color: white;
+  padding: 5px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link.btn:hover {
+  background-color: #fff;
+  border-radius: 20px;
+  color: black !important;
+  padding: 5px 20px;
+  transition: background-color 0.3s ease;
+}
+.nav-link:hover {
+  color: black;
+}
+
+.col-md-6 {
+  flex: wrap;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Équipe */
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.person {
+  width: calc(50% - 20px);
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.person h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: whitesmoke;
+}
+
+.person p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: white;
+}
+
+.social-links a {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #007bff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+  background-color: #0056b3;
+}
+
+.person::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.person:nth-child(1) {
+  background-image: url("/assets/img/back-ground/Sajed.png");
+}
+
+.person:nth-child(2) {
+  background-image: url("/assets/img/back-ground/Marc.png");
+}
+
+.person:nth-child(3) {
+  background-image: url("/assets/img/back-ground/Abdou.jpg");
+}
+
+.person:nth-child(4) {
+  background-image: url("/assets/img/back-ground/Miyad (2).jpg");
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .person {
+    width: 100%;
+  }
+}
