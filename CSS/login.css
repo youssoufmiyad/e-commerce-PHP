@@ -10,6 +10,7 @@ body {
   color: #fff;
 }
 
+
 .logo {
   max-height: 110px;
   margin-top: 1rem;
@@ -103,6 +104,10 @@ body {
 .login-form p {
   margin-bottom: 20px;
   color: #333;
+}
+
+.login-form a{
+color: #fff;
 }
 
 .login-form label {
