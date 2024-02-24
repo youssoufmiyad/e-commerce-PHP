@@ -63,30 +63,37 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     } else {
         echo "incomplet";
-        $stmt = $db->prepare("INSERT INTO orders (AdressId, UserId) VALUES (?,?)");
-        $stmt->bind_param("ii", $adressId, $_SESSION["user"]["userId"]);
-        $stmt->execute();
-        echo "order created";
 
-        $orderId = $stmt->insert_id;
-        $order = $db->query('SELECT * FROM orders WHERE OrderId=' . $orderId . ';')->fetch_assoc();
-
-        $cartId = $db->query('SELECT * FROM cart WHERE UserId=' . $_SESSION["user"]["userId"] . ';')->fetch_assoc();
-        $products = $db->query('SELECT * FROM cart_items WHERE cartId=' . $cartId["CartId"] . ';');
-
-        $totalPrice = $cartId["TotalPrice"];
-
-
-        foreach ($products as $product) {
-            $addItems = $db->prepare("INSERT INTO order_items (OrderId, Price, ProductId, Quantity) VALUES (?,?,?,?);");
-            $addItems->bind_param("idii", $orderId, $product["Price"], $product["ProductId"], $product["Quantity"]);
-            $addItems->execute();
-        }
-        $db->query("UPDATE orders SET TotalPrice=$totalPrice WHERE OrderId=$orderId");
-
-        $db->query("DELETE FROM cart WHERE CartId = ".$cartId["CartId"]);
-
-        $db->query("DELETE FROM cart_items WHERE CartId = ".$cartId["CartId"]);
 
     }
+    $stmt = $db->prepare("INSERT INTO orders (AdressId, UserId) VALUES (?,?)");
+    $stmt->bind_param("ii", $adressId, $_SESSION["user"]["userId"]);
+    $stmt->execute();
+    echo "order created";
+
+    $orderId = $stmt->insert_id;
+    $order = $db->query('SELECT * FROM orders WHERE OrderId=' . $orderId . ';')->fetch_assoc();
+
+    $cartId = $db->query('SELECT * FROM cart WHERE UserId=' . $_SESSION["user"]["userId"] . ';')->fetch_assoc();
+    $products = $db->query('SELECT * FROM cart_items WHERE cartId=' . $cartId["CartId"] . ';');
+
+    $totalPrice = $cartId["TotalPrice"];
+
+
+    foreach ($products as $product) {
+        $addItems = $db->prepare("INSERT INTO order_items (OrderId, Price, ProductId, Quantity) VALUES (?,?,?,?);");
+        $addItems->bind_param("idii", $orderId, $product["Price"], $product["ProductId"], $product["Quantity"]);
+        $addItems->execute();
+    }
+    $db->query("UPDATE orders SET TotalPrice=$totalPrice WHERE OrderId=$orderId");
+
+    $db->query("UPDATE cart SET TotalPrice=0 WHERE UserId=" . $_SESSION["user"]["userId"] . ";");
+
+    $db->query("DELETE FROM cart_items WHERE CartId = " . $cartId["CartId"]);
+    ?>
+    <form action="invoice/index.php" method="POST">
+        <input type="hidden" name="order-id" value="<?php echo $orderId ?>">
+        <input type="submit" value="Voir la facture">
+    </form>
+    <?php
 }

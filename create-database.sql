@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 24 fév. 2024 à 12:31
+-- Généré le : sam. 24 fév. 2024 à 14:46
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.0.30
 
@@ -62,7 +62,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`CartId`, `UserId`, `TotalPrice`) VALUES
-(1, 7, 240);
+(1, 7, 0);
 
 -- --------------------------------------------------------
 
@@ -86,8 +86,19 @@ CREATE TABLE `cart_items` (
 CREATE TABLE `invoices` (
   `UserId` int(11) DEFAULT NULL,
   `InvoiceId` int(11) NOT NULL,
+  `OrderId` int(11) NOT NULL,
   `InvoiceDate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `invoices`
+--
+
+INSERT INTO `invoices` (`UserId`, `InvoiceId`, `OrderId`, `InvoiceDate`) VALUES
+(7, 1, 4, '2024-02-24 14:03:07'),
+(7, 2, 5, '2024-02-24 14:29:51'),
+(7, 3, 6, '2024-02-24 14:32:35'),
+(7, 4, 7, '2024-02-24 14:38:57');
 
 -- --------------------------------------------------------
 
@@ -110,13 +121,13 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`OrderId`, `UserId`, `AdressId`, `DepartureDate`, `ArrivalDate`, `DeliveryCompany`, `TotalPrice`) VALUES
-(16, 2, NULL, NULL, NULL, NULL, 0),
-(17, 7, 3, NULL, NULL, NULL, 0),
-(18, 7, 3, NULL, NULL, 'Fedex', 0),
-(19, 7, 3, NULL, NULL, 'Fedex', 0),
-(20, 7, 3, NULL, NULL, 'Fedex', 240),
-(21, 7, 3, NULL, NULL, 'Fedex', 240),
-(22, 7, 3, NULL, NULL, 'Fedex', 240);
+(1, 7, 3, NULL, NULL, 'Fedex', 29),
+(2, 7, 3, NULL, NULL, 'Fedex', 113),
+(3, 7, 2, NULL, NULL, 'Fedex', 99),
+(4, 7, 3, NULL, NULL, 'Fedex', 87),
+(5, 7, 3, NULL, NULL, 'Fedex', 99),
+(6, 7, 3, NULL, NULL, 'Fedex', 38),
+(7, 7, 3, NULL, NULL, 'Fedex', 533);
 
 -- --------------------------------------------------------
 
@@ -136,38 +147,14 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`OrderId`, `ProductId`, `Quantity`, `Price`) VALUES
-(19, 5, 1, 99),
-(19, 4, 1, 84),
-(19, 1, 1, 19),
-(19, 1, 2, 38),
-(19, 5, 1, 99),
-(19, 4, 1, 84),
-(19, 1, 1, 19),
-(19, 1, 2, 38),
-(20, 5, 1, 99),
-(20, 4, 1, 84),
-(20, 1, 1, 19),
-(20, 1, 2, 38),
-(20, 5, 1, 99),
-(20, 4, 1, 84),
-(20, 1, 1, 19),
-(20, 1, 2, 38),
-(21, 5, 1, 99),
-(21, 4, 1, 84),
-(21, 1, 1, 19),
-(21, 1, 2, 38),
-(21, 5, 1, 99),
-(21, 4, 1, 84),
-(21, 1, 1, 19),
-(21, 1, 2, 38),
-(22, 5, 1, 99),
-(22, 4, 1, 84),
-(22, 1, 1, 19),
-(22, 1, 2, 38),
-(22, 5, 1, 99),
-(22, 4, 1, 84),
-(22, 1, 1, 19),
-(22, 1, 2, 38);
+(1, 2, 1, 29),
+(2, 4, 1, 84),
+(3, 5, 1, 99),
+(4, 2, 3, 87),
+(5, 5, 1, 99),
+(6, 3, 2, 38),
+(7, 1, 2, 38),
+(7, 5, 5, 495);
 
 -- --------------------------------------------------------
 
@@ -344,7 +331,8 @@ ALTER TABLE `cart_items`
 --
 ALTER TABLE `invoices`
   ADD PRIMARY KEY (`InvoiceId`),
-  ADD KEY `UserId` (`UserId`);
+  ADD KEY `UserId` (`UserId`),
+  ADD KEY `invoices_FK_1` (`OrderId`);
 
 --
 -- Index pour la table `orders`
@@ -419,13 +407,13 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT pour la table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `InvoiceId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `InvoiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OrderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `OrderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `products`
@@ -466,6 +454,7 @@ ALTER TABLE `cart_items`
 -- Contraintes pour la table `invoices`
 --
 ALTER TABLE `invoices`
+  ADD CONSTRAINT `invoices_FK_1` FOREIGN KEY (`OrderId`) REFERENCES `orders` (`OrderId`),
   ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`);
 
 --

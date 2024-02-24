@@ -26,9 +26,9 @@ require_once('../utils/connect.php');
     // Test si l'utilisateur est connecté
     if (@$_SESSION["user"]) {
         $cartId = $db->query('SELECT * FROM cart WHERE UserId=' . $_SESSION["user"]["userId"] . ';')->fetch_assoc();
-        $products = $db->query('SELECT * FROM cart_items WHERE cartId=' . $cartId["CartId"] . ';');
+        @$products = $db->query('SELECT * FROM cart_items WHERE cartId=' . $cartId["CartId"] . ';');
         // Test si l'utilisateur a ajouté des éléments au panier
-        if ($products->num_rows > 0) {
+        if (@$products->num_rows > 0) {
             ?>
             <!-- Affichage de chaque produit -->
             <div class="product-list">
