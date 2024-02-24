@@ -21,7 +21,7 @@ body {
 
 .nav-link {
   font-size: 1.1em;
-  color: #614bee;
+  color: whitesmoke;
   font-weight: 700;
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 .nav-link.btn {
-  background-color: #000;
+  background-color: #614bee;
   border-radius: 20px;
   color: white;
   padding: 5px 20px;
@@ -40,7 +40,7 @@ body {
 }
 
 .nav-link.btn:hover {
-  background-color: #614bee;
+  background-color: #000;
   border-radius: 20px;
   color: whitesmoke !important;
   padding: 5px 20px;
