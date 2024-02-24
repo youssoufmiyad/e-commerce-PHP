@@ -6,7 +6,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: linear-gradient(to bottom, #000000, #614bee);
+  background: linear-gradient(to bottom, #000000, #c0c0c0);
   color: #fff;
 }
 
@@ -21,7 +21,7 @@ body {
 
 .nav-link {
   font-size: 1.1em;
-  color: #614bee;
+  color: #0077FF;
   font-weight: 700;
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 .nav-link.btn {
-  background-color: #000;
+  background-color: #0077FF;
   border-radius: 20px;
   color: white;
   padding: 5px 20px;
@@ -40,7 +40,7 @@ body {
 }
 
 .nav-link.btn:hover {
-  background-color: #614bee;
+  background-color: #000;
   border-radius: 20px;
   color: whitesmoke !important;
   padding: 5px 20px;
@@ -53,17 +53,16 @@ body {
   padding: 20px;
 }
 
-.login-container {
+.register-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  /* background: linear-gradient(to bottom, #0c0c0c, #f1f1f1); */
 }
 
-.login-form {
+.register-form {
   flex: 1;
-  margin-left: 2rem;
+  margin-right: 2rem;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
@@ -71,16 +70,16 @@ body {
   text-align: center;
 }
 
-.login-description {
+.register-description {
   flex: 1;
-  margin: 2rem;
+  margin-left: 2rem;
   padding: 20px;
-  background: rgba(97, 75, 238, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .image-container img {
@@ -89,29 +88,29 @@ body {
   border-radius: 5%;
 }
 
-.login-description p {
+.register-description p {
   color: #fff;
   text-align: center;
   font-weight: bold;
 }
 
-.login-form h1 {
+.register-form h1 {
   margin-bottom: 20px;
-  color: #614bee;
+  color: #0077FF;
 }
 
-.login-form p {
+.register-form p {
   margin-bottom: 20px;
   color: #333;
 }
 
-.login-form label {
+.register-form label {
   display: block;
   margin-bottom: 10px;
   color: #333;
 }
 
-.login-form input {
+.register-form input {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -119,7 +118,7 @@ body {
   border: 1px solid #ccc;
 }
 
-.login-form button {
+.register-form button {
   width: 100%;
   padding: 10px;
   border: none;
@@ -129,12 +128,16 @@ body {
 }
 
 .btn-gradient {
-  background: linear-gradient(to right, #9181f4, #5038ed);
+  background: linear-gradient(to right, #9181f4, #0077FF);
   transition: background 0.3s ease;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(to right, #5038ed, #9181f4);
+  background: linear-gradient(to right, #0077FF, #9181f4);
+}
+
+.register-form label img {
+  margin-right: 10px;
 }
 
 .other-login {
@@ -165,6 +168,9 @@ body {
   background-color: #000;
 }
 
-.login-bold{
-font-weight: bold;
+.login-bold {
+  font-weight: bold;
+}
+.Mail {
+  height: 20px;
 }

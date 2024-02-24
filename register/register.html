@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inscription - Prestige</title>
+    <link href="/CSS/register.css" rel="stylesheet" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="navbar">
+          <a href="/index.html">
+            <img
+              src="/assets/img/Blue-Prestige.png"
+              alt="Logo Y’Cross"
+              class="logo"
+            />
+          </a>
+          <div class="right-menu">
+            <a class="nav-link" href="#">Shop</a>
+            <a class="nav-link" href="/about.html">À Propos</a>
+            <a class="nav-link" href="/contact.html">Nous contacter</a>
+            <a class="nav-link btn btn-dark text-white" href="/login/login.html"
+              >Connexion</a
+            >
+          </div>
+        </nav>
+      </header>
+      <div class="register-container">
+        <div class="register-form">
+          <h1>Inscription</h1>
+          <p>Rejoignez-nous dès maintenant !</p>
+          <form>
+            <label for="fullname"
+              ><img src="/assets/img/icon/user.png" alt="" /> Nom complet</label
+            >
+            <input type="text" id="fullname" name="fullname" required />
+            <label for="email"
+              ><img class="Mail" src="/assets/img/icon/email.png" alt="" /> Adresse
+              email</label
+            >
+            <input type="email" id="email" name="email" required />
+            <label for="password"
+              ><img src="/assets/img/icon/password1.png" alt="" /> Mot de
+              passe</label
+            >
+            <input type="password" id="password" name="password" required />
+            <label for="confirm_password"
+              ><img src="/assets/img/icon/password1.png" alt="" /> Confirmer le
+              mot de passe</label
+            >
+            <input
+              type="password"
+              id="confirm_password"
+              name="confirm_password"
+              required
+            />
+            <button type="submit" class="btn-gradient">S'inscrire</button>
+          </form>
+        </div>
+        <div class="register-description">
+          <p>
+            Découvrez l'exclusivité de l'horlogerie de luxe avec "Prestige".
+          </p>
+          <div class="image-container">
+            <img
+              src="/assets/img/Icon_prestige.png"
+              alt="Description de l'image"
+              class="img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
