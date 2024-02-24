@@ -2,7 +2,7 @@
 require_once("../../utils/connect.php");
 session_start();
 
-echo $_GET["adress-id"]; ?>
+echo $_POST["adress-id"]; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +18,7 @@ echo $_GET["adress-id"]; ?>
     <div class="container-fluid">
         <div class="methods">
             <form id="form-card" method="POST" action="confirmation.php">
+            <input type="hidden" name="adress-id" value="<?php echo $_POST["adress-id"] ?>">
                 <?php
                 // Requête de selection du method à la base de données
                 $methods = $db->query('SELECT * FROM payment WHERE UserId =' . $_SESSION["user"]["userId"]);
@@ -35,12 +36,15 @@ echo $_GET["adress-id"]; ?>
                                         <img src="../../assets/<?= $method['CardType'] ?>-card.svg" alt="card type" width="64px"
                                             height="64px">
                                     </div>
+
                                     <div class="card-number">
                                         <?= substr($method['CardNumber'], 0, 4) . "..." ?>
                                     </div>
+
                                     <div class="card-expiration">
                                         <?= $method['ExpirationDate'] ?>
                                     </div>
+
                                 </label>
                             </div>
                             <br>

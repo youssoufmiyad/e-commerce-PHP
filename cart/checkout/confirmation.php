@@ -2,14 +2,17 @@
 require_once("../../utils/connect.php");
 session_start();
 
+$adressId = $_POST["adress-id"];
+
+$card_info = $db->query("SELECT * from payment WHERE CardNumber=" . $_POST["card-id"])->fetch_assoc();
+
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     echo $_POST["card-id"];
     if ($_POST["card-id"] !== "new") {
         ?>
-        <form method="get" action="payment.php" id="id-form">
+        <form method="POST" action="payment.php" id="id-form">
             <input type="hidden" name="card-id" value="<?php echo $_POST["card-id"] ?>">
-            <input type="submit">
         </form>
         <script>
             function submit() {
@@ -34,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         } elseif (strlen($card_cvv) > 4) {
             echo "cvv invalide";
         } else {
-            if (filter_var($card_number, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $MASTERCARD_REGEX))) ) {
+            if (filter_var($card_number, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $MASTERCARD_REGEX)))) {
                 $card_type = "Mastercard";
             } else if (filter_var($card_number, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $AMERICAN_EXPRESS_REGEX)))) {
                 $card_type = "American Express";
@@ -51,26 +54,19 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 echo "card added";
             }
 
-            // $id = $db->query("SELECT AdressId from adresses WHERE UserId=" . $_SESSION["user"]["userId"] . " AND CardNumber='" . $card_number . "' AND Country='" . $country . "'");
-            // $id = $id->fetch_assoc();
-            // $id = $id["AdressId"];
-            // echo "adress added";
+
         }
+
+
         ?>
-        <!-- <form method="get" action="payment.php" id="id-form">
-            <input type="hidden" name="adress-id" value="<?php echo $id ?>">
-            <input type="submit">
-        </form>
-        <script>
-            function submit() {
-                let form = document.getElementById("id-form");
-                form.submit();
-            }
-            // submit();
-        </script> -->
+
         <?php
 
     } else {
         echo "incomplet";
+        $stmt = $db->prepare("INSERT INTO orders (AdressId, UserId) VALUES (?,?)");
+        $stmt->bind_param("ii", $adressId, $_SESSION["user"]["userId"]);
+        $stmt->execute();
+        echo "order created";
     }
 }

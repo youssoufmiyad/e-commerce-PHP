@@ -6,7 +6,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($_POST["adress-id"] !== "new") {
         ?>
-        <form method="get" action="payment.php" id="id-form">
+        <form method="POST" action="payment.php" id="id-form">
             <input type="hidden" name="adress-id" value="<?php echo $_POST["adress-id"] ?>">
             <input type="submit">
         </form>
