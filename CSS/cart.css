@@ -44,11 +44,13 @@
 	margin-bottom: 20px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	
 }
 
 .shopping-cart .items .product .info{
 	padding-top: 0px;
 	text-align: center;
+	
 }
 
 .shopping-cart .items .product .info .product-name{

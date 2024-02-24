@@ -49,7 +49,7 @@ function productDetailTemplate($file, $name, $price, $description, $vendor, $qua
                         </div>
                         <div class=\"block quantity\">
                             <form action=\"../add_to_cart.php\" id=\"form-cart\" method=\"post\">
-                                <input type=\"number\" class=\"form-control\" id=\"cart_quantity\" value=\"1\" min=\"1\" max=\"5\" name=\"cart_quantity\">
+                                <input type=\"number\" class=\"form-control\" id=\"cart-quantity\" value=\"1\" min=\"1\" max=\"5\" name=\"cart-quantity\">
 
                                 <!-- export du nom du produit (caché du client grace à l'attribut \"hidden\") -->
                                 <input type=\"text\" name=\"product-name\" id=\"product-name\" value=\"$name\" hidden>

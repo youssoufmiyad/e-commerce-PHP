@@ -45,9 +45,7 @@ $invoice = $db->query("SELECT * FROM invoices WHERE OrderId=$orderId;")->fetch_a
 
 $html = "<div>
 <table>
-<caption>
-    Commande n°$orderId
-</caption>
+
 <thead>
     <tr>
         <th scope=\"col\"></th>
@@ -58,15 +56,14 @@ $html = "<div>
     </tr>
 </thead>
 <tbody>";
-
 foreach ($order_items as $item) {
+
     $product = $db->query("SELECT Name, Price FROM products WHERE ProductId=" . $item["ProductId"])->fetch_assoc();
     $product_img = $db->query("SELECT Image FROM products_photo WHERE ProductId=" . $item["ProductId"])->fetch_assoc();
     $base64img = @base64_encode($product_img["Image"]);
     $src = "data:image/jpeg;base64," . $base64img;
-
-    $html .= "<tr>"
-        . "<td><img src=$src alt=\"product photo\" width=\"64px\" height=\"64px\"/></td>"
+    $html .= '<tr>'
+        . '<td><img src="' . $src . '" alt="product photo" width="64px" height="64px" border="0"></td>'
         . "<td>" . $product["Name"] . "</td>"
         . "<td>" . $item["Quantity"] . "</td>"
         . "<td>" . $product["Price"] . "€</td>"

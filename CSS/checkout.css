@@ -1,0 +1,11 @@
+.adress-items{
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    border: #3b99e0 2px solid;
+}
+
+.card-items{
+    display: flex;
+    flex-direction: row;
+}

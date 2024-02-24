@@ -22,7 +22,6 @@ if ($products->num_rows > 0) {
         $image = $image->fetch_assoc();
         $base64img = @base64_encode($image["Image"]);
         $src = "data:image/jpeg;base64," . $base64img;
-
         // Ajout des données du produit dans la template
         productDetailTemplate($file, $row["Name"], $row["Price"], $row["Description"], $row["Vendor"], $row["Quantity"], $src);
 
