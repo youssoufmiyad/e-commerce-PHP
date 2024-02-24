@@ -17,7 +17,7 @@ echo $_GET["adress-id"]; ?>
 <body>
     <div class="container-fluid">
         <div class="methods">
-            <form id="form-card" method="POST" action="card_valid.php">
+            <form id="form-card" method="POST" action="confirmation.php">
                 <?php
                 // Requête de selection du method à la base de données
                 $methods = $db->query('SELECT * FROM payment WHERE UserId =' . $_SESSION["user"]["userId"]);

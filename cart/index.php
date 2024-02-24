@@ -105,7 +105,7 @@ require_once('../utils/connect.php');
                                                         class="price">5€</span></div>
                                                 <div class="summary-item"><span class="text">Total</span><span
                                                         class="price"><?=$cartId["TotalPrice"]+5?>€</span></div>
-                                                <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+                                                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='checkout';">Checkout</button>
                                             </div>
                                         </div>
                                     </div>

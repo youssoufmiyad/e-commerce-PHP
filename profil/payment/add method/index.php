@@ -3,9 +3,9 @@ require_once("../../../utils/connect.php");
 
 session_start();
 
-$VISA_REGEX = "^4[0-9]{6,}$^";
-$MASTERCARD_REGEX = "^5[1-5][0-9]{5,}|222[1-9][0-9]{3,}|22[3-9][0-9]{4,}|2[3-6][0-9]{5,}|27[01][0-9]{4,}|2720[0-9]{3,}$^";
-$AMERICAN_EXPRESS_REGEX = "^3[47][0-9]{5,}$^";
+$VISA_REGEX = "^4[0-9]{12}(?:[0-9]{3})?$^";
+$MASTERCARD_REGEX = "^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$^";
+$AMERICAN_EXPRESS_REGEX = "^3[47][0-9]{13}$^";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -51,12 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include("../../../CSS/main.css") ?></style>
+    <style>
+        <?php include("../../../CSS/main.css") ?>
+    </style>
     <title>Add payment method</title>
 </head>
 
 <body>
-<?php require_once('../../../navbar.php'); ?>
+    <?php require_once('../../../navbar.php'); ?>
     <form method="post">
         <label for="form-card-number">Card number:</label><br>
         <input type="text" id="form-card-number" name="form-card-number"><br>
