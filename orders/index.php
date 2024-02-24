@@ -8,7 +8,9 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include("../CSS/main.css") ?></style>
+    <style>
+        <?php include("../CSS/main.css") ?>
+    </style>
     <title>order history</title>
 </head>
 <?php
@@ -26,29 +28,34 @@ require_once('../utils/connect.php');
         if ($orders->num_rows > 0) {
             ?>
             <!-- Affichage de chaque produit -->
-            <div class="product-list">
+            <div class="order-list">
                 <?php
                 foreach ($orders as $order) {
-                    $product = $db->query('SELECT * FROM products WHERE ProductId=' . $order['ProductId'] . ';');
-                    $product = $product->fetch_assoc();
-
-                    echo $order['ProductId'];
-                    $image = $db->query("SELECT Image FROM products_photo WHERE ProductId=" . $order['ProductId'] . ";");
-                    $image = $image->fetch_assoc();
-                    $base64img = @base64_encode($image["Image"]);
-                    $src = "data:image/jpeg;base64," . $base64img;
+                    $items = $db->query('SELECT * FROM order_items WHERE OrderId=' . $order['OrderId'] . ';');
                     ?>
-                    <!-- TODO : 
+                    <div class="orders-item" id="order-<?= $order['OrderId'] ?>">
+                        <h1>ORDER
+                            <?= $order['OrderId'] ?>
+                        </h1>
+                        <?php
+                        foreach ($items as $item) {
+                            $item_info = $db->query('SELECT * FROM products WHERE ProductId=' . $item['ProductId'] . ';')->fetch_assoc();
+                            ?>
+                            <!-- TODO : 
                     - ajouter les champs propre aux commandes tels que la date d'envoi/livraison
-                    - donner la possibilité à l'utilisateur de consulter ses factures -->
-                    <div class="orders-item" id="product-<?= $order['ProductId'] ?>">
-                        <div class="product-name">
-                            <?= $product['Name'] ?>
-                        </div>
-                        <div class="product-image">
-                            <img src="<?= $src ?>" alt="product image">
-                        </div>
+-->
+
+                            <div class="product-name">
+                                <?= $item_info['Name'] ?>
+                            </div>
+
+                            <?php
+                        } ?>
                     </div>
+                    <form action="../cart/checkout/invoice/index.php" method="post">
+                        <input type="hidden" name="order-id" value="<?= $order['OrderId'] ?>">
+                        <button>voir facture</button>
+                    </form>
                     <br>
                     <?php
                 }
