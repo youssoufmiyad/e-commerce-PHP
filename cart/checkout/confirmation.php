@@ -33,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $card_cvv = $_POST['form-card-cvv'];
 
         if (strlen($card_number) < 15 || strlen($card_number) > 16) {
-            echo "numéro de carte invalide";
+            throw new Exception("numéro de carte invalide");
         } elseif (strlen($card_cvv) > 4) {
-            echo "cvv invalide";
+            throw new Exception("cvv invalide", 1);
         } else {
             if (filter_var($card_number, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $MASTERCARD_REGEX)))) {
                 $card_type = "Mastercard";
@@ -44,8 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             } else if (filter_var($card_number, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $VISA_REGEX)))) {
                 $card_type = "VISA";
             } else {
-                echo "card not supported";
-                return;
+                throw new Exception("card not supported", 1);
             }
             if ($card_type) {
                 $addCard = $db->prepare("INSERT INTO `payment` (`UserId`, `CardType`, `CardNumber`, `ExpirationDate`, `CVV` ) VALUES (?,?,?,?,?);");
@@ -68,5 +67,26 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $stmt->bind_param("ii", $adressId, $_SESSION["user"]["userId"]);
         $stmt->execute();
         echo "order created";
+
+        $orderId = $stmt->insert_id;
+        $order = $db->query('SELECT * FROM orders WHERE OrderId=' . $orderId . ';')->fetch_assoc();
+
+        $cartId = $db->query('SELECT * FROM cart WHERE UserId=' . $_SESSION["user"]["userId"] . ';')->fetch_assoc();
+        $products = $db->query('SELECT * FROM cart_items WHERE cartId=' . $cartId["CartId"] . ';');
+
+        $totalPrice = $cartId["TotalPrice"];
+
+
+        foreach ($products as $product) {
+            $addItems = $db->prepare("INSERT INTO order_items (OrderId, Price, ProductId, Quantity) VALUES (?,?,?,?);");
+            $addItems->bind_param("idii", $orderId, $product["Price"], $product["ProductId"], $product["Quantity"]);
+            $addItems->execute();
+        }
+        $db->query("UPDATE orders SET TotalPrice=$totalPrice WHERE OrderId=$orderId");
+
+        $db->query("DELETE FROM cart WHERE CartId = ".$cartId["CartId"]);
+
+        $db->query("DELETE FROM cart_items WHERE CartId = ".$cartId["CartId"]);
+
     }
 }

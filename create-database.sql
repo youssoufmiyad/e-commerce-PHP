@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 23 fév. 2024 à 23:32
+-- Généré le : sam. 24 fév. 2024 à 12:31
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.0.30
 
@@ -67,16 +67,26 @@ INSERT INTO `cart` (`CartId`, `UserId`, `TotalPrice`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `cart_items`
+--
+
+CREATE TABLE `cart_items` (
+  `CartId` int(11) NOT NULL,
+  `ProductId` int(11) NOT NULL,
+  `Quantity` int(11) NOT NULL DEFAULT 1,
+  `Price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `invoices`
 --
 
 CREATE TABLE `invoices` (
   `UserId` int(11) DEFAULT NULL,
   `InvoiceId` int(11) NOT NULL,
-  `ProductId` int(11) DEFAULT NULL,
-  `InvoiceDate` datetime DEFAULT NULL,
-  `UnitPrice` float DEFAULT NULL,
-  `Quantity` int(11) DEFAULT NULL
+  `InvoiceDate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -87,21 +97,77 @@ CREATE TABLE `invoices` (
 
 CREATE TABLE `orders` (
   `OrderId` int(11) NOT NULL,
-  `InvoiceId` int(11) DEFAULT NULL,
-  `ProductId` int(11) DEFAULT NULL,
   `UserId` int(11) DEFAULT NULL,
   `AdressId` int(11) DEFAULT NULL,
   `DepartureDate` datetime DEFAULT NULL,
   `ArrivalDate` datetime DEFAULT NULL,
-  `DeliveryCompany` varchar(15) DEFAULT NULL
+  `DeliveryCompany` varchar(15) DEFAULT 'Fedex',
+  `TotalPrice` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `orders`
 --
 
-INSERT INTO `orders` (`OrderId`, `InvoiceId`, `ProductId`, `UserId`, `AdressId`, `DepartureDate`, `ArrivalDate`, `DeliveryCompany`) VALUES
-(16, NULL, 1, 2, NULL, NULL, NULL, NULL);
+INSERT INTO `orders` (`OrderId`, `UserId`, `AdressId`, `DepartureDate`, `ArrivalDate`, `DeliveryCompany`, `TotalPrice`) VALUES
+(16, 2, NULL, NULL, NULL, NULL, 0),
+(17, 7, 3, NULL, NULL, NULL, 0),
+(18, 7, 3, NULL, NULL, 'Fedex', 0),
+(19, 7, 3, NULL, NULL, 'Fedex', 0),
+(20, 7, 3, NULL, NULL, 'Fedex', 240),
+(21, 7, 3, NULL, NULL, 'Fedex', 240),
+(22, 7, 3, NULL, NULL, 'Fedex', 240);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `OrderId` int(11) NOT NULL,
+  `ProductId` int(11) NOT NULL,
+  `Quantity` int(11) NOT NULL DEFAULT 1,
+  `Price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `order_items`
+--
+
+INSERT INTO `order_items` (`OrderId`, `ProductId`, `Quantity`, `Price`) VALUES
+(19, 5, 1, 99),
+(19, 4, 1, 84),
+(19, 1, 1, 19),
+(19, 1, 2, 38),
+(19, 5, 1, 99),
+(19, 4, 1, 84),
+(19, 1, 1, 19),
+(19, 1, 2, 38),
+(20, 5, 1, 99),
+(20, 4, 1, 84),
+(20, 1, 1, 19),
+(20, 1, 2, 38),
+(20, 5, 1, 99),
+(20, 4, 1, 84),
+(20, 1, 1, 19),
+(20, 1, 2, 38),
+(21, 5, 1, 99),
+(21, 4, 1, 84),
+(21, 1, 1, 19),
+(21, 1, 2, 38),
+(21, 5, 1, 99),
+(21, 4, 1, 84),
+(21, 1, 1, 19),
+(21, 1, 2, 38),
+(22, 5, 1, 99),
+(22, 4, 1, 84),
+(22, 1, 1, 19),
+(22, 1, 2, 38),
+(22, 5, 1, 99),
+(22, 4, 1, 84),
+(22, 1, 1, 19),
+(22, 1, 2, 38);
 
 -- --------------------------------------------------------
 
@@ -111,7 +177,7 @@ INSERT INTO `orders` (`OrderId`, `InvoiceId`, `ProductId`, `UserId`, `AdressId`,
 
 CREATE TABLE `payment` (
   `UserId` int(11) DEFAULT NULL,
-  `CardType` varchar(15) DEFAULT NULL,
+  `CardType` varchar(16) DEFAULT NULL,
   `CardNumber` varchar(70) DEFAULT NULL,
   `ExpirationDate` char(7) DEFAULT NULL,
   `CVV` varchar(70) DEFAULT NULL
@@ -122,7 +188,16 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`UserId`, `CardType`, `CardNumber`, `ExpirationDate`, `CVV`) VALUES
-(7, 'Mastercard', '4932321949213453', '2024/12', '123');
+(7, 'Mastercard', '4932321949213453', '2024/12', '123'),
+(7, 'Mastercard', '537728832392112', '', '939'),
+(7, 'Mastercard', '427034209931923', '', '887'),
+(7, 'Mastercard', '4270493024931884', '2024/04', '829'),
+(7, 'VISA', '4270329488520392', '2024/10', '002'),
+(7, 'VISA', '5185730450000003', '2024/03', '123'),
+(7, 'Mastercard', '5185730450000003', '2024/09', '123'),
+(7, 'VISA', '4111111145551142', '2030/03', '737'),
+(7, 'American Expres', '370000000000002', '2024/12', '737'),
+(7, 'American Express', '370000000000002', '2024/11', '737');
 
 -- --------------------------------------------------------
 
@@ -258,22 +333,33 @@ ALTER TABLE `cart`
   ADD KEY `UserId` (`UserId`);
 
 --
+-- Index pour la table `cart_items`
+--
+ALTER TABLE `cart_items`
+  ADD KEY `cart_items_FK_1` (`CartId`),
+  ADD KEY `cart_items_FK_2` (`ProductId`);
+
+--
 -- Index pour la table `invoices`
 --
 ALTER TABLE `invoices`
   ADD PRIMARY KEY (`InvoiceId`),
-  ADD KEY `UserId` (`UserId`),
-  ADD KEY `ProductId` (`ProductId`);
+  ADD KEY `UserId` (`UserId`);
 
 --
 -- Index pour la table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`OrderId`),
-  ADD KEY `InvoiceId` (`InvoiceId`),
-  ADD KEY `ProductId` (`ProductId`),
   ADD KEY `UserId` (`UserId`),
   ADD KEY `AdressId` (`AdressId`);
+
+--
+-- Index pour la table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD KEY `order_items_FK_1` (`OrderId`),
+  ADD KEY `order_items_FK_2` (`ProductId`);
 
 --
 -- Index pour la table `payment`
@@ -339,7 +425,7 @@ ALTER TABLE `invoices`
 -- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OrderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `OrderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `products`
@@ -370,20 +456,31 @@ ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`);
 
 --
+-- Contraintes pour la table `cart_items`
+--
+ALTER TABLE `cart_items`
+  ADD CONSTRAINT `cart_items_FK_1` FOREIGN KEY (`CartId`) REFERENCES `cart` (`CartId`),
+  ADD CONSTRAINT `cart_items_FK_2` FOREIGN KEY (`ProductId`) REFERENCES `products` (`ProductId`);
+
+--
 -- Contraintes pour la table `invoices`
 --
 ALTER TABLE `invoices`
-  ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`),
-  ADD CONSTRAINT `invoices_ibfk_2` FOREIGN KEY (`ProductId`) REFERENCES `products` (`ProductId`);
+  ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`);
 
 --
 -- Contraintes pour la table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`InvoiceId`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`ProductId`) REFERENCES `products` (`ProductId`),
   ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`),
   ADD CONSTRAINT `orders_ibfk_4` FOREIGN KEY (`AdressId`) REFERENCES `adresses` (`AdressId`);
+
+--
+-- Contraintes pour la table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_FK_1` FOREIGN KEY (`OrderId`) REFERENCES `orders` (`OrderId`),
+  ADD CONSTRAINT `order_items_FK_2` FOREIGN KEY (`ProductId`) REFERENCES `products` (`ProductId`);
 
 --
 -- Contraintes pour la table `payment`
