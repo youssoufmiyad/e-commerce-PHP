@@ -8,7 +8,6 @@ $card_info = $db->query("SELECT * from payment WHERE CardNumber=" . $_POST["card
 
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    echo $_POST["card-id"];
     if ($_POST["card-id"] !== "new") {
         ?>
         <form method="POST" action="payment.php" id="id-form">
@@ -50,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $addCard = $db->prepare("INSERT INTO `payment` (`UserId`, `CardType`, `CardNumber`, `ExpirationDate`, `CVV` ) VALUES (?,?,?,?,?);");
                 $addCard->bind_param("issss", $_SESSION["user"]["userId"], $card_type, $card_number, $card_date, $card_cvv);
                 $addCard->execute();
-                echo "card added";
             }
 
 
@@ -69,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $stmt = $db->prepare("INSERT INTO orders (AdressId, UserId) VALUES (?,?)");
     $stmt->bind_param("ii", $adressId, $_SESSION["user"]["userId"]);
     $stmt->execute();
-    echo "order created";
 
     $orderId = $stmt->insert_id;
     $order = $db->query('SELECT * FROM orders WHERE OrderId=' . $orderId . ';')->fetch_assoc();
@@ -90,6 +87,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $db->query("UPDATE cart SET TotalPrice=0 WHERE UserId=" . $_SESSION["user"]["userId"] . ";");
 
     $db->query("DELETE FROM cart_items WHERE CartId = " . $cartId["CartId"]);
+
+    $date = date('Y-m-d H:i:s');
+
+    $stmt = $db->prepare("INSERT INTO invoices (OrderId, UserId, InvoiceDate) VALUES (?,?,?)");
+    $stmt->bind_param("iis", $orderId, $_SESSION["user"]["userId"], $date);
+    $stmt->execute();
     ?>
     <form action="invoice/index.php" method="POST">
         <input type="hidden" name="order-id" value="<?php echo $orderId ?>">
