@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Prestige</title>
+    <link rel="stylesheet" href="/dashboard/css/dashboard.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="navbar">
+          <a href="/index.html">
+            <img
+              src="/assets/img/Red-Black-Prestige.png"
+              alt="Logo Prestige"
+              class="logo"
+            />
+          </a>
+          <div class="right-menu">
+            <a class="nav-link" href="/shop.html">Shop</a>
+            <a class="nav-link" href="/about.html">À Propos</a>
+            <a class="nav-link" href="/contact.html">Nous contacter</a>
+            <a class="nav-link" href="/dashboard/dashboard.html">Dashboard</a>
+            <a class="nav-link btn btn-dark text-white" href="/login/login.html"
+              >Déconnexion</a
+            >
+          </div>
+        </nav>
+      </header>
+      <div class="dashboard-container">
+        <h1>Tableau de Bord</h1>
+        <div class="order-history">
+          <h2>Historique des Achats</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Produits</th>
+                <th>Total</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>2024-02-25</td>
+                <td>Rolex Submariner</td>
+                <td>25,000 €</td>
+                <td>En cours de livraison</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="profile-info">
+          <h2>Informations du Profil</h2>
+          <p>Nom: Sajed Ben Youssef</p>
+          <p>Email: Sajed.benyoussef@ynov.com</p>
+          <p>Adresse: 92 Rue du Scam, Paris, France</p>
+          <a href="#" class="btn btn-primary">Modifier le Profil</a>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
