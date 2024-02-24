@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: linear-gradient(to bottom, #000000, #c0c0c0);
+  color: #fff;
+}
+
+.logo {
+  max-height: 110px;
+  margin-top: 1rem;
+}
+
+.right-menu {
+  display: flex;
+}
+
+.nav-link {
+  font-size: 1.1em;
+  color: whitesmoke;
+  font-weight: 700;
+}
+
+.nav-link.active {
+  padding-bottom: 5px;
+  border: 1px white solid;
+  border-radius: 5px;
+}
+
+.nav-link.btn {
+  background-color: #0077FF;
+  border-radius: 20px;
+  color: white;
+  padding: 5px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link.btn:hover {
+  background-color: #000;
+  border-radius: 20px;
+  color: whitesmoke !important;
+  padding: 5px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.register-form {
+  flex: 1;
+  margin-right: 2rem;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.register-description {
+  flex: 1;
+  margin-left: 2rem;
+  padding: 20px;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5%;
+}
+
+.register-description p {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+.register-form h1 {
+  margin-bottom: 20px;
+  color: #0077FF;
+}
+
+.register-form p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-gradient {
+  background: linear-gradient(to right, #9181f4, #0077FF);
+  transition: background 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(to right, #0077FF, #9181f4);
+}
+
+.register-form label img {
+  margin-right: 10px;
+}
+
+.other-login {
+  margin-top: 20px;
+}
+
+.other-login p {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.btn-gitea,
+.btn-github {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-gitea {
+  background-color: #333;
+}
+
+.btn-github {
+  background-color: #000;
+}
+
+.login-bold {
+  font-weight: bold;
+}
+.Mail {
+  height: 20px;
+}
