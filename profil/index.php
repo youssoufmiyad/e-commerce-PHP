@@ -141,7 +141,7 @@ require_once('../utils/connect.php');
                             <div class="card-items" id="card-items">
                                 <div class="card-type">
                                     <img src="../assets/<?= $payment_method['CardType'] ?>-card.svg" alt="Card type"
-                                        width="32px" height="32px">
+                                        width="64px" height="64px">
                                 </div>
                                 <div class="card-number">
                                     <?= substr($payment_method['CardNumber'], 0, 4) . "..." ?>
