@@ -72,25 +72,7 @@ require_once('utils/generate_product_page.php'); ?>
 
 <body>
     <div class="container">
-        <header>
-            <nav class="navbar">
-                <a href="./"><img src="assets/img/Black-Prestige.png" alt="Logo Y’Cross" class="logo" id="logo" /></a>
-                <div class="right-menu">
-                    <a class="nav-link" href="products/products.html">Shop</a>
-                    <a class="nav-link" href="about.html">À Propos</a>
-                    <a class="nav-link" href="contact.html">Nous contacter</a>
-                    <?php if (@$_SESSION["user"]) {
-                        echo '<form action="utils/disconnect.php">
-                        <input type="submit" class="nav-link btn btn-dark text-white" name="disconnect" value="disconnect" />
-                    </form>';
-                    } else {
-                        echo '<a class="nav-link btn btn-dark text-white" href="login/">Connexion</a>';
-                    }
-                    ?>
-
-                </div>
-            </nav>
-        </header>
+        <?php include("navbar.php") ?>
 
         <div class="row">
             <div class="col-md-6">

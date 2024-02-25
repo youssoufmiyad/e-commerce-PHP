@@ -1,3 +1,158 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  body {
+	background: linear-gradient(to right, #adb0b0, #e1e1e1);
+	font-family: "Open Sans", sans-serif;
+	color: black;
+  }
+  
+  .logo {
+	max-height: 110px;
+	margin-top: 1rem;
+  }
+  
+  .nav {
+	margin-bottom: 2px;
+	justify-content: flex-end;
+  }
+  
+  .right-menu {
+	display: flex;
+  }
+  
+  .nav-link {
+	color: #fff;
+	font-size: 1.1em;
+  }
+  
+  .nav-link.active {
+	padding-bottom: 5px;
+	border: 1px white solid;
+	border-radius: 5px;
+  }
+  
+  .nav-link.btn {
+	background-color: #000;
+	border-radius: 20px;
+	color: white;
+	padding: 5px 20px;
+	transition: background-color 0.3s ease;
+  }
+  
+  .nav-link.btn:hover {
+	background-color: #fff;
+	border-radius: 20px;
+	color: black !important;
+	padding: 5px 20px;
+	transition: background-color 0.3s ease;
+  }
+  .nav-link:hover {
+	color: black;
+  }
+  
+  .col-md-6 {
+	flex: wrap;
+  }
+  
+  main {
+	padding: 2em 0;
+	margin-bottom: 0rem !important;
+  }
+  
+  h1 {
+	margin-bottom: 0.5em;
+	color: #fff;
+  }
+  
+  .tagline {
+	font-size: 1.5em;
+	margin-bottom: 1em;
+	color: red;
+	font-weight: bold;
+  }
+  
+  .Bienvenue {
+	color: #fff;
+  }
+  
+  .price-tag {
+	font-size: 2.5em;
+	font-weight: bold;
+	margin-bottom: 1em;
+	color: #fff;
+  }
+  
+  .text-black {
+	color: black !important;
+  }
+  
+  .carousel-controls {
+	/* margin-top: 2em; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  .carousel-controls .btn {
+	font-size: 2em;
+	color: #000;
+	background-color: transparent;
+	border: none;
+	transition: color 0.3s ease;
+  }
+  
+  .carousel-controls .btn:hover {
+	color: #555;
+  }
+  
+  /* Bootstrap overrides */
+  .container {
+	max-width: 960px; /*largeur */
+  }
+  
+  .row {
+	align-items: center; /* Centre vertical colonnes */
+  }
+  
+  /* Style pour l'image de la moto */
+  .img-fluid {
+	max-width: 80% !important;
+	/* height: auto; */
+  }
+  .rond {
+	background: rgba(0, 0, 0, 0.85);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+	border-radius: 50%;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	color: #fff;
+	font-weight: bold;
+	height: 50px;
+	width: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+  }
+  
+  @media (max-width: 768px) {
+	/* pour les écrans plus petits */
+	.nav-link.btn {
+	  display: block;
+	  margin-top: 10px;
+	}
+  
+	.carousel-controls {
+	  display: flex;
+	  justify-content: center;
+	}
+  }
+  
 .shopping-cart{
 	padding-bottom: 50px;
 	font-family: 'Montserrat', sans-serif;
