@@ -61,6 +61,20 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.profile-info-container {
+  margin-top: 2rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info-container div {
+  margin-right: auto;
+}
+
 .profile-container h1 {
   margin-bottom: 20px;
   color: #000;
@@ -110,10 +124,9 @@ body {
   color: #000;
 }
 
-.form-container form{
+.form-container form {
   margin-left: 10%;
   margin-right: 10%;
-  
 }
 
 .form-container label {

@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         try {
             $postQuery->execute();
             echo "Produit modifié avec succès !";
+            header("location: ../");
         } catch (Exception $e) {
             throw $e;
         }

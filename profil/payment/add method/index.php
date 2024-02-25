@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $addCard->execute();
                 echo "card added";
             }
-
+            header("location: ../../");
         }
 
     } else {
@@ -51,23 +51,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        <?php include("../../../CSS/main.css") ?>
-    </style>
+    <link rel="stylesheet" href="../../../CSS/profil.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
     <title>Add payment method</title>
 </head>
 
 <body>
     <?php require_once('../../../navbar.php'); ?>
-    <form method="post">
-        <label for="form-card-number">Card number:</label><br>
-        <input type="text" id="form-card-number" name="form-card-number"><br>
-        <label for="form-card-expiration-date">Expiration date:</label><br>
-        <input type="month" id="form-card-expiration-date" name="form-card-expiration-date"><br>
-        <label for="form-card-cvv">CVV:</label><br>
-        <input type="text" id="form-card-cvv" name="form-card-cvv"><br><br>
-        <input type="submit">
-    </form>
+    <div class="form-container">
+
+        <form method="post">
+            <label for="form-card-number">Card number:</label><br>
+            <input type="text" id="form-card-number" name="form-card-number"><br>
+            <label for="form-card-expiration-date">Expiration date:</label><br>
+            <input type="month" id="form-card-expiration-date" name="form-card-expiration-date"><br>
+            <label for="form-card-cvv">CVV:</label><br>
+            <input type="text" id="form-card-cvv" name="form-card-cvv"><br><br>
+            <input type="submit">
+        </form>
+    </div>
+
 </body>
 
 </html>

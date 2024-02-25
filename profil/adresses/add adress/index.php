@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $addAdress->bind_param("issss", $_SESSION["user"]["userId"], $street, $city, $country, $postal_code);
         $addAdress->execute();
         echo "adress added";
-
+        header("location: ../../");
     } else {
         echo "incomplet";
     }
@@ -28,36 +28,40 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include("../../../CSS/main.css") ?></style>
+    <link rel="stylesheet" href="../../../CSS/profil.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <title>Add payment method</title>
 </head>
 
 <body>
     <?php require_once('../../../navbar.php'); ?>
-    <form method="post">
-        <label for="form-adress-country">Pays:</label><br>
-        <select name="form-adress-country" id="form-adress-country">
-            <option value="DE">Allemagne</option>
-            <option value="BE">Belgique</option>
-            <option value="HR">Croatie</option>
-            <option value="DK">Danemark</option>
-            <option value="ES">Espagne</option>
-            <option value="FR">France</option>
-            <option value="GR">Greece</option>
-            <option value="GB">Royaume Uni</option>
-        </select><br>
+    <div class="form-container">
 
-        <label for="form-adress-street">Rue:</label><br>
-        <input type="text" id="form-adress-street" name="form-adress-street"><br>
+        <form method="post">
+            <label for="form-adress-country">Pays:</label><br>
+            <select name="form-adress-country" id="form-adress-country">
+                <option value="DE">Allemagne</option>
+                <option value="BE">Belgique</option>
+                <option value="HR">Croatie</option>
+                <option value="DK">Danemark</option>
+                <option value="ES">Espagne</option>
+                <option value="FR">France</option>
+                <option value="GR">Greece</option>
+                <option value="GB">Royaume Uni</option>
+            </select><br>
 
-        <label for="form-adress-city">Ville:</label><br>
-        <input type="text" id="form-adress-city" name="form-adress-city"><br>
+            <label for="form-adress-street">Rue:</label><br>
+            <input type="text" id="form-adress-street" name="form-adress-street"><br>
 
-        <label for="form-adress-postal-code">Code Postal:</label><br>
-        <input type="text" id="form-adress-postal-code" name="form-adress-postal-code"><br><br>
+            <label for="form-adress-city">Ville:</label><br>
+            <input type="text" id="form-adress-city" name="form-adress-city"><br>
 
-        <input type="submit">
-    </form>
+            <label for="form-adress-postal-code">Code Postal:</label><br>
+            <input type="text" id="form-adress-postal-code" name="form-adress-postal-code"><br><br>
+
+            <input type="submit">
+        </form>
+    </div>
 </body>
 
 </html>
