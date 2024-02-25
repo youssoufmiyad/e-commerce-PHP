@@ -23,7 +23,7 @@ text-color {
 
 .main-description .vendor {
   text-transform: uppercase;
-  color: #00c41a;
+  color: #409045;
 }
 
 .main-description .product-title {
@@ -60,7 +60,7 @@ text-color {
 
 .custom-btn {
   text-transform: capitalize;
-  background-color: #00c41a;
+  background-color: #409045;
   color: white;
   width: 175px;
   height: 40px;
