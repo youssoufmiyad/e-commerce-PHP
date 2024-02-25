@@ -56,10 +56,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $produits = $db->query('SELECT * FROM products');
     if ($produits->num_rows > 0) {
         foreach ($produits as $produit) {
+            $image = $db->query("SELECT Image FROM products_photo WHERE ProductId=" . $produit["ProductId"] . ";");
+            $image = $image->fetch_assoc();
+            $base64img = @base64_encode($image["Image"]);
+            $src = "data:file/png;base64," . $base64img;
             ?>
             <tr>
                 <td>
                     <?= $produit['ProductId'] ?>
+                </td>
+                <td>
+                    <img src="<?php echo $src ?>" height="32px" width="32px" />
                 </td>
                 <td>
                     <?= $produit['Name'] ?>
@@ -69,6 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </td>
                 <td>
                     <?= $produit['Description'] ?>
+                </td>
+                <td>
+                    <?= $produit['Category'] ?>
                 </td>
                 <td>
                     <?= $produit['Vendor'] ?>

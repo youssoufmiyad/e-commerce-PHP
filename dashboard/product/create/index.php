@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             die("Upload failed with error code " . $_FILES['productImage']['error']);
           }
 
-        $image = file_get_contents($_FILES["productImage"]["tmp_name"]);
-        $info = getimagesize($_FILES["productImage"]["tmp_name"]);
+        $image = file_get_contents($_FILES["productImage"]["name"]);
+        $info = getimagesize($_FILES["productImage"]["name"]);
         $extension = image_type_to_extension($info[2]);
 
 
@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $addPhoto->bind_param("ss", $actualProduct["ProductId"], $image);
             $addPhoto->execute();
             echo "Photo ajouté avec succès !";
+            unlink($_FILES["productImage"]["name"]);
 
         } catch (Exception $e) {
             throw $e;
