@@ -8,10 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        <?php include("../CSS/main.css") ?>
-    </style>
-    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../CSS/cart.css">
     <title>Cart</title>
 </head>
@@ -77,11 +74,15 @@ require_once('../utils/connect.php');
                                                                             <label for="quantity">Quantity:</label>
                                                                             <input id="quantity" type="number"
                                                                                 value="<?= $produit['Quantity'] ?>"
-                                                                                class="form-control quantity-input">
+                                                                                class="form-control quantity-input" disabled>
                                                                         </div>
                                                                         <div class="col-md-3 price">
                                                                             <span>
-                                                                                <?php echo $price ?> €
+                                                                                <?php if (strlen($price) > 3) {
+                                                                                    echo substr_replace($price, ",", -3, 0);
+                                                                                } else {
+                                                                                    echo $price;
+                                                                                } ?>€
                                                                             </span>
                                                                         </div>
                                                                     </div>
@@ -97,15 +98,18 @@ require_once('../utils/connect.php');
                                         <div class="col-md-12 col-lg-4">
                                             <div class="summary">
                                                 <h3>Summary</h3>
-                                                <div class="summary-item"><span class="text">Subtotal</span><span
-                                                        class="price"><?=$cartId["TotalPrice"]?>€</span></div>
+                                                <div class="summary-item"><span class="text">Subtotal</span><span class="price">
+                                                        <?= $cartId["TotalPrice"] ?>€
+                                                    </span></div>
                                                 <div class="summary-item"><span class="text">Discount</span><span
                                                         class="price">$0</span></div>
                                                 <div class="summary-item"><span class="text">Shipping</span><span
                                                         class="price">5€</span></div>
-                                                <div class="summary-item"><span class="text">Total</span><span
-                                                        class="price"><?=$cartId["TotalPrice"]+5?>€</span></div>
-                                                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='checkout';">Checkout</button>
+                                                <div class="summary-item"><span class="text">Total</span><span class="price">
+                                                        <?= $cartId["TotalPrice"] + 5 ?>€
+                                                    </span></div>
+                                                <button type="button" class="btn btn-primary btn-lg btn-block"
+                                                    onclick="window.location.href='checkout';">Checkout</button>
                                             </div>
                                         </div>
                                     </div>

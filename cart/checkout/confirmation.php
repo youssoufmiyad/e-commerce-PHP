@@ -59,10 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         <?php
 
-    } else {
-        echo "incomplet";
-
-
     }
     $stmt = $db->prepare("INSERT INTO orders (AdressId, UserId) VALUES (?,?)");
     $stmt->bind_param("ii", $adressId, $_SESSION["user"]["userId"]);
@@ -94,9 +90,31 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $stmt->bind_param("iis", $orderId, $_SESSION["user"]["userId"], $date);
     $stmt->execute();
     ?>
-    <form action="invoice/index.php" method="POST">
-        <input type="hidden" name="order-id" value="<?php echo $orderId ?>">
-        <input type="submit" value="Voir la facture">
-    </form>
+    <?php require_once('../../navbar.php'); ?>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Confirmation</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../../CSS/checkout.css">
+        <link rel="stylesheet" href="../../CSS/style.css">
+    </head>
+
+    <body>
+
+    </body>
+
+    </html>
+    <div class="confirmation-container">
+        <h1>Votre achat a bien été effectué</h1>
+
+        <form action="invoice/index.php" method="POST">
+            <input type="hidden" name="order-id" value="<?php echo $orderId ?>">
+            <input type="submit" class="invoice-btn" value="Voir la facture">
+        </form>
+    </div>
     <?php
 }
