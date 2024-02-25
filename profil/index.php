@@ -167,11 +167,63 @@ require_once('../utils/connect.php');
                 ?>
             </div>
         </div>
-    </div>
+        <div class="profile-container">
+        <h1>Commandes :</h1>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <?php
+            // Test si l'utilisateur est connecté
+            if (@$_SESSION["user"]) {
+                $orders = $db->query('SELECT * FROM orders WHERE UserId=' . $_SESSION["user"]["userId"] . ';');
+                // Test si l'utilisateur a déjà commandé
+                if ($orders->num_rows > 0) {
+                    ?>
+                    <!-- Affichage de chaque produit -->
+                    <div class="order-list">
+                        <?php
+                        foreach ($orders as $order) {
+                            $items = $db->query('SELECT * FROM order_items WHERE OrderId=' . $order['OrderId'] . ';');
+                            ?>
+                            <div class="orders-item" id="order-<?= $order['OrderId'] ?>">
+                                <h1>ORDER
+                                    <?= $order['OrderId'] ?>
+                                </h1>
+                                <?php
+                                foreach ($items as $item) {
+                                    $item_info = $db->query('SELECT * FROM products WHERE ProductId=' . $item['ProductId'] . ';')->fetch_assoc();
+                                    ?>
+                                    <!-- TODO : 
+                    - ajouter les champs propre aux commandes tels que la date d'envoi/livraison
+-->
+
+                                    <div class="product-name">
+                                        <?= $item_info['Name'] ?>
+                                    </div>
+
+                                    <?php
+                                } ?>
+                            </div>
+                            <form action="../cart/checkout/invoice/index.php" method="post">
+                                <input type="hidden" name="order-id" value="<?= $order['OrderId'] ?>">
+                                <button>voir facture</button>
+                            </form>
+                            <br>
+                            <?php
+                        }
+
+                } else {
+                    echo "<h3>Vous n'avez passez aucune commande</h3>";
+                }
+
+            } else {
+                echo "connectez vous pour voir votre historique de commande";
+            }
+            ?>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>
