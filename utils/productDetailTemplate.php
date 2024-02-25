@@ -35,7 +35,11 @@ function productDetailTemplate($file, $name, $price, $description, $category, $v
 
                     <div class=\"price-area my-4\">
                     <p class=\"old-price mb-1\">Catégorie : $category</p>
-                        <p class=\"new-price text-bold mb-1\">$price €</p>
+                        <p class=\"new-price text-bold mb-1\"><?php if ($price > 1000) {
+                            echo substr_replace($price, \",\", -3, 0);
+                        } else {
+                            echo $price;
+                        } ?>  €</p>
                         <p class=\"text-secondary mb-1\">(Quantité restante : $quantity)</p>
                     </div>
 
