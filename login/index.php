@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
         // Requête de sélection des utilisateurs à des fins d'identification
         $users = $db->query(
-            "SELECT * FROM users"
+            "SELECT * FROM users WHERE Enabled=1"
         );
     } catch (Exception $e) {
         throw $e;

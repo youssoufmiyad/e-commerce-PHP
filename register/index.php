@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 $image = file_get_contents($tmpFile);
 
-                $actualUser = $db->query("SELECT UserId from users WHERE Email='$email'")->fetch_assoc();
+                $actualUser = $db->query("SELECT * from users WHERE Email='$email'")->fetch_assoc();
 
                 $addPhoto = $db->prepare("INSERT INTO `users_photo` (`UserId`, `Image`) VALUES (?,?);");
                 $addPhoto->bind_param("ss", $actualUser["UserId"], $image);
@@ -60,6 +60,38 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } catch (\Throwable $th) {
                 throw $th;
             }
+
+            $to_email = "<" . $actualUser["Email"] . ">";
+            $subject = "Simple Email Test via PHP";
+            $body = '<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mail</title>
+</head>
+
+<body>
+    <h1>Veuillez confirmer votre inscription</h1>
+
+    <form action="http://localhost/e-commerce-PHP/confirm mail.php" method="post">
+        <input type="hidden" name="user-id" id="user-id" value="' . $actualUser["UserId"] . '">
+        <input type="submit" value="confirmer">
+    </form>
+</body>
+
+</html>';
+            $headers = "From: prestigewatch50@gmail.com";
+            $headers .= "MIME-Version: 1.0" . "\r\nContent-type:text/html;charset=UTF-8" . "\r\n";
+
+            if (mail($to_email, $subject, $body, $headers)) {
+                echo "Email successfully sent to $to_email...";
+            } else {
+                echo "Email sending failed...";
+            }
+
+
 
         }
 
@@ -73,12 +105,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include("../CSS/main.css") ?></style>
+    <style>
+        <?php include("../CSS/main.css") ?>
+    </style>
     <title>register</title>
 </head>
 
 <body>
-<?php require_once('../navbar.php'); ?>
+    <?php require_once('../navbar.php'); ?>
     <form method="post">
         <label for="form-lastname">Last name:</label><br>
         <input type="text" id="form-lastname" name="form-lastname"><br><br>
