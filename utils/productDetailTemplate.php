@@ -1,5 +1,5 @@
 <?php
-function productDetailTemplate($file, $name, $price, $description, $vendor, $quantity, $image)
+function productDetailTemplate($file, $name, $price, $description, $category, $vendor, $quantity, $image)
 {
     fwrite($file, "
     <!DOCTYPE html>
@@ -8,7 +8,7 @@ function productDetailTemplate($file, $name, $price, $description, $vendor, $qua
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>$name</title>
         <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
-        <style><?php include(\"../../CSS/main.css\") ?></style>
+        <style><?php include(\"../../CSS/style.css\") ?></style>
         <style><?php include(\"../../CSS/detail_product.css\") ?></style>
 
     </head>
@@ -25,7 +25,7 @@ function productDetailTemplate($file, $name, $price, $description, $vendor, $qua
             </div>
             <div class=\"col-md-5\">
                 <div class=\"main-description px-2\">
-                    <div class=\"category text-bold\">
+                    <div class=\"vendor text-bold\">
                         Vendue par $vendor
                     </div>
                     <div class=\"product-title text-bold my-3\">
@@ -34,9 +34,9 @@ function productDetailTemplate($file, $name, $price, $description, $vendor, $qua
 
 
                     <div class=\"price-area my-4\">
-                    <p class=\"old-price mb-1\">Quantité restante : $quantity</p>
+                    <p class=\"old-price mb-1\">Catégorie : $category</p>
                         <p class=\"new-price text-bold mb-1\">$price €</p>
-                        <p class=\"text-secondary mb-1\">(Additional tax may apply on checkout)</p>
+                        <p class=\"text-secondary mb-1\">(Quantité restante : $quantity)</p>
                     </div>
 
 
@@ -68,14 +68,7 @@ function productDetailTemplate($file, $name, $price, $description, $vendor, $qua
                     <p class=\"description\">$description</p>
                 </div>
               
-                         <div class=\"row questions bg-light p-3\">
-                    <div class=\"col-md-1 icon\">
-                        <i class=\"fa-brands fa-rocketchat questions-icon\"></i>
-                    </div>
-                    <div class=\"col-md-11 text\">
-                        Have a question about our products at E-Store? Feel free to contact our representatives via live chat or email.
-                    </div>
-                </div>
+
 
                 <div class=\"delivery my-4\">
                     <p class=\"font-weight-bold mb-0\"><span><i class=\"fa-solid fa-truck\"></i></span> <b>Delivery done in 3 days from date of purchase</b> </p>
@@ -83,7 +76,7 @@ function productDetailTemplate($file, $name, $price, $description, $vendor, $qua
                 </div>
                 <div class=\"delivery-options my-4\">
                     <p class=\"font-weight-bold mb-0\"><span><i class=\"fa-solid fa-filter\"></i></span> <b>Delivery options</b> </p>
-                    <p class=\"text-secondary\">View delivery options here</p>
+                    <p class=\"text-secondary\">FEDEX</p>
                 </div>
                 
              
