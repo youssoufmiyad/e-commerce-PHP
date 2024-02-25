@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,19 +12,11 @@
 
 <body>
     <div class="container">
-        <header>
-            <nav class="navbar">
-                <a href="../index.php"><img src="../assets/img/White_Prestige.png" alt="Logo Y’Cross"
-                        class="logo" /></a>
-                <div class="right-menu">
-                    <a class="nav-link" href="../products/">Shop</a>
-                    <a class="nav-link" href="../about">À Propos</a>
-                    <a class="nav-link" href="../contact">Nous contacter</a>
-                    <a class="nav-link btn btn-dark text-white" href="../login/">Connexion</a>
-                </div>
-            </nav>
-        </header>
-
+        <?php include("../navbar.php") ?>
+        <script>
+            const logo = document.getElementById("logo")
+            logo.src = "../assets/img/White_Prestige.png"
+        </script>
         <div class="contact-form">
             <h1>Nous Contacter</h1>
             <p>

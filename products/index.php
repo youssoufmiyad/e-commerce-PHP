@@ -10,6 +10,7 @@
 </head>
 
 <?php
+session_start();
 // Import de la connection à la database sous la forme de la variable "$db"
 require_once('../utils/connect.php');
 ?>
