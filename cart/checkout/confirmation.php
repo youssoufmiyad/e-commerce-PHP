@@ -4,7 +4,11 @@ session_start();
 
 $adressId = $_POST["adress-id"];
 
-$card_info = $db->query("SELECT * from payment WHERE CardNumber=" . $_POST["card-id"])->fetch_assoc();
+// if (!empty($_POST["card-id"])) {
+//     $card_info = $db->query("SELECT * from payment WHERE CardNumber=" . $_POST["card-id"])->fetch_assoc();
+// }else{
+//     $card_info = $db->query("SELECT * from payment WHERE CardNumber=" . $_POST["form-card-number"])->fetch_assoc();
+// }
 
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {

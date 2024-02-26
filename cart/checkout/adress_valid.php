@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $id = $id->fetch_assoc();
         $id = $id["AdressId"];
         ?>
-        <form method="get" action="payment.php" id="id-form">
+        <form method="POST" action="payment.php" id="id-form">
             <input type="hidden" name="adress-id" value="<?php echo $id ?>">
         </form>
         <script>
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 let form = document.getElementById("id-form");
                 form.submit();
             }
-            // submit();
+            submit();
         </script>
         <?php
 
