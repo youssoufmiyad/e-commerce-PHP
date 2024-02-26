@@ -1,4 +1,4 @@
-# 🛍️ Prestige - Vente de Montres en Ligne
+# 🛍️ Prestige - Vente de Montres de luxe en Ligne
 ![Capture d'écran 2024-02-22 184329](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/30be8f51-ef35-4354-ab3e-f6aec7a31346)
 
 ## 🌐 Description
