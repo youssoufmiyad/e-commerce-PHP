@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -109,20 +109,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
-    <?php require_once('../navbar.php'); ?>
-    <form method="post">
-        <label for="form-lastname">Last name:</label><br>
-        <input type="text" id="form-lastname" name="form-lastname"><br><br>
-        <label for="form-firstname">First name:</label><br>
-        <input type="text" id="form-firstname" name="form-firstname"><br>
-        <label for="form-email">Email:</label><br>
-        <input type="text" id="form-email" name="form-email"><br><br>
-        <label for="form-password">Password:</label><br>
-        <input type="password" id="form-password" name="form-password"><br><br>
-        <label for="form-confirmPWD">Confirm password:</label><br>
-        <input type="password" id="form-confirmPWD" name="form-confirmPWD"><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <?php include("../navbar.php") ?>
+        <script>
+            const logo = document.getElementById("logo")
+            logo.src = "../assets/img/Blue-Prestige.png"
+        </script>
+        <form method="post">
+            <label for="form-lastname">Last name:</label><br>
+            <input type="text" id="form-lastname" name="form-lastname"><br><br>
+            <label for="form-firstname">First name:</label><br>
+            <input type="text" id="form-firstname" name="form-firstname"><br>
+            <label for="form-email">Email:</label><br>
+            <input type="text" id="form-email" name="form-email"><br><br>
+            <label for="form-password">Password:</label><br>
+            <input type="password" id="form-password" name="form-password"><br><br>
+            <label for="form-confirmPWD">Confirm password:</label><br>
+            <input type="password" id="form-confirmPWD" name="form-confirmPWD"><br><br>
+            <input type="submit" value="Submit">
+        </form>
 </body>
 
 </html>

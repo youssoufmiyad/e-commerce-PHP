@@ -67,9 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <img src="../assets/img/Violet-white-prestige.png" alt="Logo " class="logo" />
                 </a>
                 <div class="right-menu">
-                    <a class="nav-link" href="/products/products.html">Shop</a>
-                    <a class="nav-link" href="/about.html">À Propos</a>
-                    <a class="nav-link" href="/contact.html">Nous contacter</a>
+                    <a class="nav-link" href="../products/index.php">Shop</a>
+                    <a class="nav-link" href="../about/index.php">À Propos</a>
+                    <a class="nav-link" href="../contact/index.php">Nous contacter</a>
                     <a class="nav-link btn btn-dark text-white" href="../register/index.php">Inscription</a>
                 </div>
             </nav>

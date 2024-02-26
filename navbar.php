@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar">
-        <a href="http://localhost/e-commerce-PHP/"><img src="http://localhost/e-commerce-PHP/assets/img/Black-Prestige.png" alt="Logo Y’Cross" class="logo" id="logo" /></a>
+        <a class="aaa" href="http://localhost/e-commerce-PHP/"><img src="http://localhost/e-commerce-PHP/assets/img/Black-Prestige.png" alt="Logo Y’Cross" class="logo" id="logo" /></a>
         <div class="right-menu">
             <a class="nav-link" href="http://localhost/e-commerce-PHP/products/">Shop</a>
             <a class="nav-link" href="http://localhost/e-commerce-PHP/marketplace/">Marketplace</a>
