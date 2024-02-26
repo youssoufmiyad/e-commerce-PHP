@@ -15,8 +15,7 @@ h1 {
 }
 
 .logo {
-  margin-top: 1rem;
-  max-height: 100px;
+  max-height: 110px;
 }
 
 .nav {
@@ -40,7 +39,7 @@ h1 {
 }
 
 .nav-link.btn {
-  background-color: goldenrod;
+  background-color: #000;
   border-radius: 20px;
   color: white;
   padding: 5px 20px;
@@ -85,7 +84,6 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
-  background-size: cover;
 }
 
 .person h2 {
@@ -98,32 +96,6 @@ h1 {
   margin-bottom: 15px;
   line-height: 1.6;
   color: white;
-  background: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.person:nth-child(1) {
-  background-image: url("../assets/img/back-ground/Sajed.png");
-  filter: drop-shadow(2px 4px 6px black);
-}
-
-.person:nth-child(2) {
-  background-image: url("../assets/img/back-ground/Marc.png");
-  filter: drop-shadow(2px 4px 6px black);
-}
-
-.person:nth-child(3) {
-  background-image: url("../assets/img/back-ground/Miyad (2).jpg");
-  filter: drop-shadow(2px 4px 6px black);
-}
-
-.person:nth-child(4) {
-  background-image: url("../assets/img/back-ground/Abdou.jpg");
-  filter: drop-shadow(2px 4px 6px black);
 }
 
 .social-links a {
@@ -139,6 +111,22 @@ h1 {
 
 .social-links a:hover {
   background-color: #0056b3;
+}
+
+.person:nth-child(1) {
+  background-image: url("/assets/img/back-ground/Sajed.png");
+}
+
+.person:nth-child(2) {
+  background-image: url("/assets/img/back-ground/Marc.png");
+}
+
+.person:nth-child(3) {
+  background-image: url("/assets/img/back-ground/Abdou.jpg");
+}
+
+.person:nth-child(4) {
+  background-image: url("/assets/img/back-ground/Miyad (2).jpg");
 }
 
 /* Responsive */

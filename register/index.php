@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 // Import de la connection à la database sous la forme de la variable "$db"
 require_once("../utils/connect.php");
@@ -9,6 +8,7 @@ require_once("../utils/connect.php");
 // - 1 lettre minuscule
 // - 1 chiffre
 // - 8 caractère minimum
+
 $PASSWORD_REGEXP = "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$^";
 
 // Envoi du formulaire de création d'un utilisateur
@@ -71,38 +71,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mail</title>
 </head>
-<style>
-.email-button {
 
-    display: inline-block;
-    
-    padding: 10px 20px;
-    
-    background-color: #007bff;
-    
-    color: #fff;
-    
-    text-decoration: none;
-    
-    border-radius: 5px;
-    
-    font-weight: bold;
-    
-    transition: background-color 0.3s ease;
-    
-    }
-    
-    
-    .email-button:hover {
-    
-    background-color: #0056b3;
-    
-    }
-    
-</style>
 <body>
     <h1>Veuillez confirmer votre inscription</h1>
-    <a href="http://localhost/e-commerce-PHP/confirm mail.php?x_user-id='.$actualUser["UserId"].'" class="email-button">Confirm</a>
+
+    <form action="http://localhost/e-commerce-PHP/confirm mail.php" method="post">
+        <input type="hidden" name="user-id" id="user-id" value="' . $actualUser["UserId"] . '">
+        <input type="submit" value="confirmer">
+    </form>
 </body>
 
 </html>';
@@ -114,23 +90,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } else {
                 echo "Email sending failed...";
             }
-
-
-
         }
-
     } else {
         echo "incomplet";
     }
 }
 ?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        <?php include("../CSS/main.css") ?>
+        <?php include("../CSS/register.css") ?>
     </style>
     <title>register</title>
 </head>
