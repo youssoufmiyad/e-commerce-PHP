@@ -6,7 +6,7 @@ Prestige est un site e-commerce spécialisé dans la vente de montres de luxe en
 
 ## 🖼️ Aperçu du Projet
 ![image](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/1dbd0aa7-5cfd-4dd9-9027-a5abf8d9b28d)
-![image](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/e9b97ab2-b937-42fc-a0a6-8ba52f6101a6)
+![image](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/6070c9b0-6caa-49ea-95d8-63c7250f8d41)
 ![image](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/1805bdb2-3b34-4c76-bbdb-dcdce9a597d5)
 ![image](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/ff23d175-d382-4942-a92b-49ec78238c58)
 ![image](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/b00dc297-56ce-4ec9-b9e6-372484168849)
