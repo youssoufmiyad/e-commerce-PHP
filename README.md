@@ -60,7 +60,3 @@ Amélioration de l'expérience utilisateur et optimisation des performances du s
 ## 🌟 Conclusion
 Le projet Prestige représente notre engagement à fournir une expérience de shopping en ligne de qualité pour les passionnés de montres. Nous sommes fiers du résultat et nous nous efforçons constamment de l'améliorer pour répondre aux besoins de nos clients.
 
-
-à ajouter 
-cv github ttlmd!!!)
-
