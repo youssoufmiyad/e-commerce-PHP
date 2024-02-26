@@ -33,7 +33,7 @@ foreach ($categories as $category) {
 
                         echo '
                         <label for="category">' . $value . '</label>
-                        <input type="checkbox" name="category" value="' . $value . '">
+                        <input type="checkbox" name="category[]" value="' . $value . '">
                         <br>';
 
                     }
@@ -56,7 +56,14 @@ foreach ($categories as $category) {
             <?php
             // Requête de selection du produit à la base de données
             if (isset($_GET["category"])) {
-                $produits = $db->query('SELECT * FROM products WHERE Category="' . $_GET["category"] . '" AND UserId IS NULL');
+                $c_query = 'Category="' . $_GET["category"][0] . '"';
+                foreach ($_GET["category"] as $key => $value) {
+                    if ($key !== "0") {
+                        $c_query .= 'OR Category="' . $value . '"';
+                    }
+
+                }
+                $produits = $db->query('SELECT * FROM products WHERE ' . $c_query . ' AND UserId IS NULL');
             } else {
                 $produits = $db->query('SELECT * FROM products WHERE UserId IS NULL');
 
