@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>create product</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../create/create.css">
 </head>
 <?php
 // Import de la connection à la database sous la forme de la variable "$db"
 require_once('../../../utils/connect.php');
 ini_set("post_max_size", "30M");
 ini_set("upload_max_filesize", "30M");
-ini_set("memory_limit", "20000M"); 
+ini_set("memory_limit", "20000M");
 echo ini_get("upload_max_filesize");
 ?>
 <?php
@@ -22,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($_POST['product-name']) && !empty($_POST['price']) && !empty($_POST['descritpion']) && !empty($_POST["category"]) && !empty($_POST['vendor']) && !empty($_POST['quantity']) && !empty($_FILES['productImage'])) {
         $ROOT = ".";
         foreach ($_FILES as $file => $details) {   // Move each file from its temp directory to $ROOT
-            echo "tmp : ".$details['tmp_name'];
-            echo "\nname : ".$details['name'];
+            echo "tmp : " . $details['tmp_name'];
+            echo "\nname : " . $details['name'];
             $temp = $details['tmp_name'];
             $target = $details['name'];
             move_uploaded_file($temp, $ROOT . '/' . $target);
@@ -36,9 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $vendor = $_POST['vendor'];
         $quantity = $_POST['quantity'];
 
-        if($_FILES['productImage']['error'] !== UPLOAD_ERR_OK) {
+        if ($_FILES['productImage']['error'] !== UPLOAD_ERR_OK) {
             die("Upload failed with error code " . $_FILES['productImage']['error']);
-          }
+        }
 
         $image = file_get_contents($_FILES["productImage"]["name"]);
         $info = getimagesize($_FILES["productImage"]["name"]);
@@ -64,13 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $addPhoto->execute();
             echo "Photo ajouté avec succès !";
             unlink($_FILES["productImage"]["name"]);
-
         } catch (Exception $e) {
             throw $e;
         }
     } else {
         throw new Exception("form incomplet", 1);
-
     }
 }
 
@@ -85,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <li><a href="../delete">Supprimer un produit</a></li>
         </ul>
     </div>
-    <div>
+    <div class="divv">
         <span>Création d'un produit</span>
         <form method="post" enctype="multipart/form-data">
             <label for="product-name">Nom du produit :</label>

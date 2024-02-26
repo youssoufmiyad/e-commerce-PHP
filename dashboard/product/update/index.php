@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>update product</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../update/update.css">
 </head>
 <?php
 // Import de la connection à la database sous la forme de la variable "$db"
@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     } else {
         throw new Exception("form incomplet", 1);
-
     }
 }
 
@@ -60,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $image = $image->fetch_assoc();
             $base64img = @base64_encode($image["Image"]);
             $src = "data:file/png;base64," . $base64img;
-            ?>
+    ?>
             <tr>
                 <td>
                     <?= $produit['ProductId'] ?>
@@ -85,43 +84,43 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </td>
             </tr>
             <br>
-            <?php
+    <?php
         }
     } ?>
-    <div>
-        <span>Modification d'un produit</span>
-        <form method="post">
-            <label for="product-id">Identifiant du produit :</label>
-            <input type="number" name="product-id" id="product-id" value="<?= $result['ProductId'] ?>"
-                placeholder="entrez un id">
-            <br>
+    <div class="product-form">
+        <h2>Modification d'un produit</h2>
+        <form method="post" class="product-form__form">
+            <div class="form-group">
+                <label for="product-id" class="form-label">Identifiant du produit :</label>
+                <input type="number" name="product-id" id="product-id" value="<?= $result['ProductId'] ?>" class="form-input" placeholder="Entrez un ID">
+            </div>
 
-            <label for="product-name">Nom du produit :</label>
-            <input type="text" name="product-name" id="product-name" value="<?= $result['Name'] ?>"
-                placeholder="entrez un nom">
-            <br>
+            <div class="form-group">
+                <label for="product-name" class="form-label">Nom du produit :</label>
+                <input type="text" name="product-name" id="product-name" value="<?= $result['Name'] ?>" class="form-input" placeholder="Entrez un nom">
+            </div>
 
-            <label for="price">Prix :</label>
-            <input type="number" step="any" name="price" id="price" value="<?= $result['Price'] ?>"
-                placeholder="entrez un prix">
-            <br>
+            <div class="form-group">
+                <label for="price" class="form-label">Prix :</label>
+                <input type="number" step="any" name="price" id="price" value="<?= $result['Price'] ?>" class="form-input" placeholder="Entrez un prix">
+            </div>
 
-            <label for="description">Description :</label>
-            <input type="text" name="description" id="description" value="<?= $result['Description'] ?>"
-                placeholder="entrez un description">
-            <br>
+            <div class="form-group">
+                <label for="description" class="form-label">Description :</label>
+                <input type="text" name="description" id="description" value="<?= $result['Description'] ?>" class="form-input" placeholder="Entrez une description">
+            </div>
 
-            <label for="vendor">Vendeur :</label>
-            <input type="text" name="vendor" id="vendor" value="<?= $result['Vendor'] ?>"
-                placeholder="entrez le nom du vendeur">
-            <br>
+            <div class="form-group">
+                <label for="vendor" class="form-label">Vendeur :</label>
+                <input type="text" name="vendor" id="vendor" value="<?= $result['Vendor'] ?>" class="form-input" placeholder="Entrez le nom du vendeur">
+            </div>
 
-            <label for="quantity">Quantité :</label>
-            <input type="number" name="quantity" id="quantity" value="<?= $result['Quantity'] ?>"
-                placeholder="combien :">
-            <br>
+            <div class="form-group">
+                <label for="quantity" class="form-label">Quantité :</label>
+                <input type="number" name="quantity" id="quantity" value="<?= $result['Quantity'] ?>" class="form-input" placeholder="Combien">
+            </div>
 
-            <button>MODIFIER</button>
+            <button type="submit" class="btn-submit">MODIFIER</button>
         </form>
     </div>
 </body>

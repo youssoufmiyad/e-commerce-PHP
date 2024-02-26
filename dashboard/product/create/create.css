@@ -1,0 +1,129 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to left, white, silver);
+  font-family: Arial, sans-serif;
+}
+
+.divv{
+margin: 2rem;
+}
+
+.navbar {
+  background-color: #333;
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.navbar ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+  }
+
+.container span {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.container form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.container form label {
+  font-weight: bold;
+}
+
+.container form input,
+.container form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.container form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container form button:hover {
+  background-color: #555;
+}
+
+/* Styles pour les étiquettes de formulaire */
+label {
+  color: #ffffff; /* Couleur du texte */
+  font-size: 1.1em; /* Taille de la police */
+  font-weight: bold; /* Police en gras */
+}
+
+/* Styles pour les champs de saisie */
+input[type="text"],
+input[type="number"],
+textarea {
+  background-color: #f4f4f4; /* Couleur de fond */
+  color: #333333; /* Couleur du texte */
+  padding: 10px; /* Rembourrage */
+  border: 1px solid #cccccc; /* Bordure */
+  border-radius: 5px; /* Bordure arrondie */
+  margin-bottom: 10px; /* Marge en bas */
+}
+
+/* Styles pour le bouton de soumission */
+button {
+  background-color: #007bff; /* Couleur de fond */
+  color: #ffffff; /* Couleur du texte */
+  padding: 10px 20px; /* Rembourrage */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Bordure arrondie */
+  cursor: pointer; /* Curseur pointeur */
+}
+
+/* Gestion des erreurs de saisie */
+.error-message {
+  color: #ff0000; /* Couleur rouge pour les erreurs */
+}
+
+/* Styles pour les sections de formulaire */
+.form-section {
+  margin-bottom: 20px; /* Marge en bas */
+}
+
+/* Styles pour les images ou les aperçus de produits */
+.product-image {
+  max-width: 100%; /* Largeur maximale */
+  height: auto; /* Hauteur automatique */
+  margin-bottom: 10px; /* Marge en bas */
+}

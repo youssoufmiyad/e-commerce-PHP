@@ -5,41 +5,24 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #000, silver);
   font-family: "Open Sans", sans-serif;
-}
-
-h1 {
-  padding-top: 1rem;
+  background: linear-gradient(to bottom, #000000, #c0c0c0);
   color: #fff;
 }
 
 .logo {
+  max-height: 110px;
   margin-top: 1rem;
-  max-height: 120px;
-}
-
-.navbar {
-  margin: 2rem;
-  justify-content: flex-end;
-}
-
-.aaa {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .right-menu {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 
 .nav-link {
-  color: #fff;
   font-size: 1.1em;
-  text-decoration: none;
+  color: whitesmoke;
+  font-weight: 700;
 }
 
 .nav-link.active {
@@ -49,7 +32,7 @@ h1 {
 }
 
 .nav-link.btn {
-  background-color: #0077ff;
+  background-color: #0077FF;
   border-radius: 20px;
   color: white;
   padding: 5px 20px;
@@ -57,17 +40,19 @@ h1 {
 }
 
 .nav-link.btn:hover {
-  background-color: #fff;
+  background-color: #000;
   border-radius: 20px;
-  color: black !important;
+  color: whitesmoke !important;
   padding: 5px 20px;
   transition: background-color 0.3s ease;
 }
-.nav-link:hover {
-  color: black;
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* 
 .register-container {
   display: flex;
   justify-content: center;
@@ -89,12 +74,12 @@ h1 {
   flex: 1;
   margin-left: 2rem;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .image-container img {
@@ -111,7 +96,7 @@ h1 {
 
 .register-form h1 {
   margin-bottom: 20px;
-  color: #0077ff;
+  color: #0077FF;
 }
 
 .register-form p {
@@ -143,12 +128,12 @@ h1 {
 }
 
 .btn-gradient {
-  background: linear-gradient(to right, #9181f4, #0077ff);
+  background: linear-gradient(to right, #9181f4, #0077FF);
   transition: background 0.3s ease;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(to right, #0077ff, #9181f4);
+  background: linear-gradient(to right, #0077FF, #9181f4);
 }
 
 .register-form label img {
@@ -188,44 +173,4 @@ h1 {
 }
 .Mail {
   height: 20px;
-} */
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: whitesmoke;
-}
-
-input[type="text"],
-input[type="password"] {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-input[type="submit"] {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #0056b3;
 }

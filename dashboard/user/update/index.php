@@ -46,10 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
     <div class="navbar">
         <ul>
-            <li><a href="../create">Enregistrer un nouveau utilisateur</a></li>
-            <li><a href="../">Voir les utilisateur</a></li>
-            <li><a href="./">Modifier un utilisateur existant</a></li>
-            <li><a href="../delete">Supprimer un utilisateur</a></li>
+            <li><a href="../create">Enregistrer un nouveau utilisate$utilisateur</a></li>
+            <li><a href="../">Voir les utilisate$utilisateur</a></li>
+            <li><a href="./">Modifier un utilisate$utilisateur existant</a></li>
+            <li><a href="../delete">Supprimer un utilisate$utilisateur</a></li>
         </ul>
     </div>
     <?php
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 placeholder="entrez un id">
             <br>
 
-            <label for="form-lastname">Nom de l'utilisateur :</label>
+            <label for="form-lastname">Nom du utilisateur :</label>
             <input type="text" name="form-lastname" id="form-lastname" value="<?= $result['LastName'] ?>"
                 placeholder="entrez un nom">
             <br>
@@ -113,9 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 placeholder="entrez le mot de passe">
             <br>
 
-            <input type="hidden" name="MAX_FILE_SIZE" value="999999999999">
+            <!-- <input type="hidden" name="MAX_FILE_SIZE" value="999999999999">
             <label for="user-image">Image</label>
-            <input type="file" name="user-image" id="user-image" accept="image/png, image/gif, image/jpeg"><br>
+            <input type="file" name="user-image" id="user-image" accept="image/png, image/gif, image/jpeg"><br> -->
 
 
             <button>MODIFIER</button>
