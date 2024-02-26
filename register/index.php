@@ -9,6 +9,7 @@ require_once("../utils/connect.php");
 // - 1 lettre minuscule
 // - 1 chiffre
 // - 8 caractère minimum
+
 $PASSWORD_REGEXP = "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$^";
 
 // Envoi du formulaire de création d'un utilisateur
@@ -90,11 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } else {
                 echo "Email sending failed...";
             }
-
-
-
         }
-
     } else {
         echo "incomplet";
     }
@@ -106,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        <?php include("../CSS/main.css") ?>
+        <?php include("../register/index.php") ?>
     </style>
     <title>register</title>
 </head>
