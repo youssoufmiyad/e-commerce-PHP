@@ -29,8 +29,8 @@ La maquette du projet a été réalisée en tenant compte des meilleures pratiqu
 ## Répartition des Rôles
 Le projet a été réalisé en collaboration avec mes camarades de classe vous pouvez y retrouvez nos branches :
 - [[Sajed](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Sajed)]() : Front-End, Maquette, README.
-- [[Marc](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main)](l[ien_vers_cv_github_marc](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main)) : Front-end, Trello.
-- [[Miyad](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Miyad)]([lien_vers_cv_github_miyad](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Miyad)) : Back-End, Intégration des APIs de Paiement, Sécurité.
+- [[Marc](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main)]: Front-end, Trello.
+- [[Miyad](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Miyad)] : Back-End, Intégration des APIs de Paiement, Sécurité.
 - [Abdou](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main) : Back-End, Authentification Utilisateur, Gestion des Commandes.
 
 ## 🌟 Trello
