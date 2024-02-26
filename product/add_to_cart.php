@@ -21,6 +21,8 @@ if ($cart->num_rows > 0) {
         $addProduct = $db->query("INSERT INTO `cart_items` (`CartId`, `ProductId`, `Quantity`, `Price`) VALUES (" . $cartData["CartId"] . ", $productId,$quantity," . $totalPrice . ");");
         echo "ajouté au panier";
         $db->query("UPDATE `cart` SET `TotalPrice`=" . intval($cartData["TotalPrice"]) + intval($totalPrice) . " WHERE `UserId`=" . $userId . ";");
+        header("location: http://localhost/e-commerce-PHP/cart/");
+
     } catch (\Throwable $th) {
         throw $th;
     }
