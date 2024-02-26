@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>create user</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/dashboard/user/create/create.css">
 </head>
 <?php
 // Import de la connection à la database sous la forme de la variable "$db"
@@ -84,19 +84,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo $actualUser["UserId"];
                 $addPhoto->execute();
                 unlink($_FILES["user-image"]["name"]);
-
             } catch (Exception $e) {
                 throw $e;
             }
         }
     } else {
         throw new Exception("form incomplet", 1);
-
     }
 }
-
-
-
 
 ?>
 
@@ -121,6 +116,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <button>Poster</button>
     </form>
 </body>
-
 
 </html>

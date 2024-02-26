@@ -84,6 +84,7 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  background-image: "/assets/back-ground/Sajed.png";
 }
 
 .person h2 {
@@ -113,8 +114,8 @@ h1 {
   background-color: #0056b3;
 }
 
-.person:nth-child(1) {
-  background-image: url("/assets/img/back-ground/Sajed.png");
+.sajed {
+  background-image: url("/assets/back-ground/Sajed.png");
 }
 
 .person:nth-child(2) {
@@ -122,11 +123,11 @@ h1 {
 }
 
 .person:nth-child(3) {
-  background-image: url("/assets/img/back-ground/Abdou.jpg");
+  background-image: url("/assets/img/back-ground/Miyad (2).jpg");
 }
 
 .person:nth-child(4) {
-  background-image: url("/assets/img/back-ground/Miyad (2).jpg");
+  background-image: url("/assets/img/back-ground/Abdou.jpg");
 }
 
 /* Responsive */

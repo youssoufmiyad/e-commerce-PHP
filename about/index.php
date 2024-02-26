@@ -23,6 +23,7 @@
       <h1>À Propos de Notre Équipe</h1>
       <div class="team">
         <div class="person">
+          <div class="sajed">
           <h2>Sajed (Front-End)</h2>
           <p>
             Sajed s'est occupé du design des différentes pages telles que
@@ -31,9 +32,10 @@
             De plus, il a travaillé sur le front du dashboard.
           </p>
           <div class="social-links">
-            <a href="lien_vers_linkedIn_de_Sajed" target="_blank">LinkedIn</a>
-            <a href="lien_vers_github_de_Sajed" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/sajed-benyoussef" target="_blank">LinkedIn</a>
+            <a href="https://github.com/Sajedd" target="_blank">GitHub</a>
             <a href="lien_vers_cv_de_Sajed" target="_blank">CV</a>
+            </div>
           </div>
         </div>
         <div class="person">
