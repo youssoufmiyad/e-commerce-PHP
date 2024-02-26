@@ -20,15 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $id = $_POST['product-id'];
 
         // Requête d'insert du produit à la base de données
-        $postQuery = $db->prepare("DELETE from `products` WHERE `ProductId`=?;");
-        $postQuery->bind_param("s", $id);
-
-        try {
-            $postQuery->execute();
-            echo "Produit supprimé avec succès !";
-        } catch (Exception $e) {
-            throw $e;
-        }
+        $db->query("DELETE FROM `products_photo` WHERE `ProductId`=$id;");
+        $db->query("DELETE FROM `products` WHERE `ProductId`=$id;");
+        echo "Produit supprimé avec succès !";
     } else {
         throw new Exception("Identifiant du produit non renseigné", 1);
 

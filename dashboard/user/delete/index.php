@@ -18,14 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Vérification du remplissage du champ "user-id" coté serveur
     if (isset($_POST['user-id'])) {
         $id = $_POST['user-id'];
-
         // Requête d'insert du produit à la base de données
-        $postQuery = $db->prepare("DELETE from `users` WHERE `UserId`=?;");
-        $postQuery->bind_param("i", $id);
+        $db->query("DELETE FROM `users_photo` WHERE `UserId`=$id;");
+        $db->query("DELETE FROM `users` WHERE `UserId`=$id;");
 
         try {
-            $postQuery->execute();
-            echo "Produit supprimé avec succès !";
+            echo "Utilisateur supprimé avec succès !";
         } catch (Exception $e) {
             throw $e;
         }
