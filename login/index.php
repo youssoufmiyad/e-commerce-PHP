@@ -41,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     } catch (Exception $th) {
                         throw $th;
                     }
-
                 }
             }
             echo "<div class=\"login-error\">adresse mail ou mot de passe incorrect</div>";
@@ -71,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <a class="nav-link" href="/products/products.html">Shop</a>
                     <a class="nav-link" href="/about.html">À Propos</a>
                     <a class="nav-link" href="/contact.html">Nous contacter</a>
-                    <a class="nav-link btn btn-dark text-white" href="/register/register.html">Inscription</a>
+                    <a class="nav-link btn btn-dark text-white" href="../register/index.php">Inscription</a>
                 </div>
             </nav>
         </header>
