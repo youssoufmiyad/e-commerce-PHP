@@ -38,12 +38,9 @@ foreach ($categories as $category) {
 
                     }
                     ?>
-                    <button>cherchez</button>
-                </form>
-                <form class="d-flex my-2 my-lg-0">
-                    <input class="form-control me-sm-2" type="text" placeholder="Search" />
+                    <input class="form-control me-sm-2" type="text" name="search" placeholder="Search" />
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                        Search
+                        Chercher
                     </button>
                 </form>
             </div>
@@ -63,12 +60,19 @@ foreach ($categories as $category) {
                     }
 
                 }
-                $produits = $db->query('SELECT * FROM products WHERE ' . $c_query . ' AND UserId IS NULL');
+                if (isset($_GET["search"]) && $_GET["search"]!=="") {
+                    $produits = $db->query('SELECT * FROM products WHERE (' . $c_query . ') AND Name LIKE "%' . $_GET["search"] . '%" AND (UserId IS NULL AND Vendor NOT LIKE "NULL")');
+                } else {
+                    $produits = $db->query('SELECT * FROM products WHERE (' . $c_query . ') AND (UserId IS NULL AND Vendor NOT LIKE "NULL")');
+
+                }
+            } else if (isset($_GET["search"]) && $_GET["search"]!=="") {
+                $produits = $db->query('SELECT * FROM products WHERE Name LIKE "%' . $_GET["search"] . '%" AND (UserId IS NULL AND Vendor NOT LIKE "NULL")');
             } else {
                 $produits = $db->query('SELECT * FROM products WHERE UserId IS NULL');
 
             }
-            if ($produits->num_rows > 0) {
+            if (@$produits->num_rows > 0) {
                 ?>
                 <!-- affichage de chaque produit -->
                 <?php
@@ -111,6 +115,10 @@ foreach ($categories as $category) {
                 }
                 ?>
         </div>
+        <?php
+            } else {
+                ?>
+        <h1>aucun produit correspondant</h1>
         <?php
             }
             ?>
