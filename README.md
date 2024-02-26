@@ -28,10 +28,10 @@ La maquette du projet a été réalisée en tenant compte des meilleures pratiqu
 
 ## Répartition des Rôles
 Le projet a été réalisé en collaboration avec mes camarades de classe vous pouvez y retrouvez nos branches :
-- [[Sajed](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Sajed)]() : Front-End, Maquette, README.
-- [[Marc](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main)]: Front-end, Trello.
-- [[Miyad](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Miyad)] : Back-End, Intégration des APIs de Paiement, Sécurité.
-- [Abdou](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main) : Back-End, Authentification Utilisateur, Gestion des Commandes.
+- [[Sajed](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Sajed)]() : Front-End, Sajed s'est occupé du design des différentes pages telles que l'authentification, le profil, le panier, etc. Il a également géré le routage et la gestion de l'authentification de l'utilisateur. De plus, il a travaillé sur le front du dashboard ainsi que les Maquettes et le README..
+- [[Marc](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main)]: Front-end, Marc a collaboré avec Sajed sur le front-end en s'occupant notamment du design et de l'ergonomie des différentes pages. Il a également travaillé sur le design du dashboard et sa mission etais de tenir à jour le Trello.
+- [[Miyad](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Miyad)] : Back-End,Miyad a contribué au développement du back-end en travaillant sur les fonctionnalités de CRUD pour les produits et les utilisateurs. Il a également participé à la conception du dashboard administrateur et à la gestion de la sécurité des accès.
+- [Abdou](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main) : Back-End, Abdoulaye a été responsable de la création et de l'implémentation de la base de données. Il a également développé les API CRUD pour la gestion des produits et des utilisateurs, ainsi que le dashboard pour les administrateurs.
 
 ## 🌟 Trello
 Nous avons utilisé Trello comme outil de gestion de projet pour organiser nos tâches, collaborer et suivre notre progression. Vous pouvez accéder à notre tableau Trello [ici](lien_vers_trello).
@@ -41,3 +41,26 @@ Nous avons utilisé Trello comme outil de gestion de projet pour organiser nos t
 - Back-End : PHP, MySQL
 - Outils : Trello, , Xamp, GitHub, Figma, Adobe, Canva, Bootstrap, Phpmyadmin
 
+## Comment lancer le projet
+
+Pour lancer le projet sur votre machine locale, suivez ces étapes :
+
+1. **Clonez le dépôt GitHub** sur votre machine :
+   ```bash
+   git clone https://github.com/youssoufmiyad/e-commerce-PHP.git
+Accédez au répertoire du projet :
+
+bash
+Copy code
+cd e-commerce-PHP
+Configurez votre environnement PHP en installant un serveur web (comme Apache) et PHP sur votre machine si ce n'est pas déjà fait.
+
+Importez la base de données en utilisant le fichier SQL fourni dans le répertoire database.
+
+Configurez les informations de connexion à la base de données en modifiant le fichier utils/connect.php avec vos paramètres.
+
+Démarrez votre serveur web local.
+
+Accédez au projet via votre navigateur en utilisant l'URL locale.
+
+Vous devriez maintenant voir la page d'accueil du projet et pouvoir interagir avec ses fonctionnalités.
