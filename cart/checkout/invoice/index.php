@@ -88,5 +88,6 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->lastPage();
 
 ob_end_clean();
+
 $pdf->Output("Commande n°$orderId");
 

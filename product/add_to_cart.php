@@ -21,6 +21,8 @@ if ($cart->num_rows > 0) {
         $addProduct = $db->query("INSERT INTO `cart_items` (`CartId`, `ProductId`, `Quantity`, `Price`) VALUES (" . $cartData["CartId"] . ", $productId,$quantity," . $totalPrice . ");");
         echo "ajouté au panier";
         $db->query("UPDATE `cart` SET `TotalPrice`=" . intval($cartData["TotalPrice"]) + intval($totalPrice) . " WHERE `UserId`=" . $userId . ";");
+        header("location: http://localhost/e-commerce-PHP/cart/");
+
     } catch (\Throwable $th) {
         throw $th;
     }
@@ -30,9 +32,11 @@ if ($cart->num_rows > 0) {
         $cartId = $db->query("SELECT * FROM cart WHERE UserId=" . $userId . ";")->fetch_assoc();
         // Requête d'insert du produit dans le panier à la base de données
         $addProduct = $db->query("INSERT INTO `cart_items` (`CartId`, `ProductId`, `Quantity`, `Price`) VALUES (" . $cartId["CartId"] . ", $productId,$quantity," . $totalPrice . ");");
-        echo "ajouté au panier";
+        echo "ajoutaw au panier";
         $db->query("UPDATE `cart` SET `TotalPrice`=" . intval($cartId["TotalPrice"]) + intval($totalPrice) . " WHERE `UserId`=" . $userId . ";");
         // Requête d'insert du produit dans le panier à la base de données
+        echo "price set";
+        header("location: http://localhost/e-commerce-PHP/cart/");
     } catch (\Throwable $th) {
         throw $th;
     }

@@ -18,11 +18,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $lastname = $_POST['form-lastname'];
         $firstname = $_POST['form-firstname'];
         $email = $_POST['form-email'];
+
         $password = password_hash($_POST['form-password'], PASSWORD_DEFAULT);
         $confirm_password = password_verify($_POST['form-confirmPWD'], $password);
 
+        $mails = $db->query("SELECT Email from users");
+        $mail_taken = false;
+
+        foreach ($mails as $value) {
+
+        }
+
+        if ($mail_taken) {
+            echo "Adresse mail déja enregistré sur un compte";
+        }
         // Vérification de la validité de l'email
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo "Invalid email format";
         }
         // Vérification de la validité du mot de passe selon le regex
@@ -57,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo $actualUser["UserId"];
                 $addPhoto->execute();
                 echo "Photo ajouté avec succès !";
+                unlink($tmpFile);
             } catch (\Throwable $th) {
                 throw $th;
             }
@@ -87,6 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             if (mail($to_email, $subject, $body, $headers)) {
                 echo "Email successfully sent to $to_email...";
+                header("location: ../");
             } else {
                 echo "Email sending failed...";
             }

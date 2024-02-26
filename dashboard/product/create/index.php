@@ -87,28 +87,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <span>Création d'un produit</span>
         <form method="post" enctype="multipart/form-data">
             <label for="product-name">Nom du produit :</label>
-            <input type="text" name="product-name" id="product-name" placeholder="entrez un nom">
+            <input type="text" name="product-name" id="product-name" placeholder="entrez un nom" required>
             <br>
 
 
             <label for="price">Prix :</label>
-            <input type="number" step="any" name="price" id="price" placeholder="entrez un prix">
+            <input type="number" step="any" name="price" id="price" placeholder="entrez un prix" required>
             <br>
 
             <label for="descritpion">Description :</label>
-            <input type="text" name="descritpion" id="descritpion" placeholder="entrez une descritpion">
+            <input type="text" name="descritpion" id="descritpion" placeholder="entrez une descritpion" required>
             <br>
 
             <label for="category">Category :</label>
-            <input type="text" name="category" id="category" placeholder="montre en or, acier, de sport, etc...">
+            <input type="text" name="category" id="category" placeholder="montre en or, acier, de sport, etc..." required>
             <br>
 
             <label for="vendor">Vendeur :</label>
-            <input type="text" name="vendor" id="vendor" placeholder="entrez le nom du vendeur">
+            <input type="text" name="vendor" id="vendor" placeholder="entrez le nom du vendeur" required>
             <br>
 
             <label for="quantity">Quantité :</label>
-            <input type="number" name="quantity" id="quantity" placeholder="combien :">
+            <input type="number" name="quantity" id="quantity" placeholder="combien :" required>
             <br>
 
             <input type="hidden" name="MAX_FILE_SIZE" value="999999999999" />
