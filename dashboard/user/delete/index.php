@@ -18,8 +18,32 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Vérification du remplissage du champ "user-id" coté serveur
     if (isset($_POST['user-id'])) {
         $id = $_POST['user-id'];
+        $productsId = $db->query("SELECT * FROM `products` WHERE `UserId`=$id;");
+        foreach ($productsId as $productId) {
+            echo "DELETE FROM `products_photo` WHERE `ProductId`=" . $productId["ProductId"] . ";";
+            $db->query("DELETE FROM `products_photo` WHERE `ProductId`=" . $productId["ProductId"] . ";");
+            echo "UPDATE `order_items`SET ProductId=NULL WHERE `ProductId`=$id;";
+            $db->query("UPDATE `order_items`SET ProductId=NULL WHERE `ProductId`=$id;");
+    
+        }
         // Requête d'insert du produit à la base de données
+        echo "DELETE FROM `adresses` WHERE `UserId`=$id;";
+        $db->query("DELETE FROM `adresses` WHERE `UserId`=$id;");
+        echo "DELETE FROM `payment` WHERE `UserId`=$id;";
+        $db->query("DELETE FROM `payment` WHERE `UserId`=$id;");
+
+        echo "DELETE FROM `products` WHERE `UserId`=$id;";
+        $db->query("DELETE FROM `products` WHERE `UserId`=$id;");
+        echo "DELETE FROM `users_photo` WHERE `UserId`=$id;";
         $db->query("DELETE FROM `users_photo` WHERE `UserId`=$id;");
+        echo "DELETE FROM `cart` WHERE `UserId`=$id;";
+        $db->query("DELETE FROM `cart` WHERE `UserId`=$id;");
+        echo "DELETE FROM `invoices` WHERE `UserId`=$id;";
+        $db->query("DELETE FROM `invoices` WHERE `UserId`=$id;");
+        echo "DELETE FROM `orders` WHERE `UserId`=$id;";
+        $db->query("DELETE FROM `orders` WHERE `UserId`=$id;");
+
+        echo "DELETE FROM `users` WHERE `UserId`=$id;";
         $db->query("DELETE FROM `users` WHERE `UserId`=$id;");
 
         try {

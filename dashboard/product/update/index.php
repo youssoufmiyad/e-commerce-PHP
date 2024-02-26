@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 placeholder="entrez un prix">
             <br>
 
-            <label for="description">Nom du produit :</label>
+            <label for="description">Description :</label>
             <input type="text" name="description" id="description" value="<?= $result['Description'] ?>"
                 placeholder="entrez un description">
             <br>
