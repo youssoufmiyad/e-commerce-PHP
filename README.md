@@ -49,7 +49,8 @@ En tant que membre de l'équipe front-end, j'ai participé à la conception et �
 ## 🎨 Maquette
 J'ai personnellement conçu la maquette du site Prestige, en m'inspirant de l'esthétique du luxe et de l'élégance. Chaque détail a été soigneusement pensé pour offrir une expérience visuelle immersive aux utilisateurs.
 ![Capture d'écran 2024-02-22 114350](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/901c3eb5-7338-46f1-811a-7799398bf62e)
-![Desktop - 1 (1)](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/d0afdb22-154d-4857-b942-97656cd28945)
+![image](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/af936e52-0523-4a62-862c-cc13d9aa1607)
+![Capture d'écran 2024-02-26 100513](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/252659c7-4eb2-4bae-afe8-b6e382d4111a)
 
 
 ## 🚀 Prochaines Étapes
