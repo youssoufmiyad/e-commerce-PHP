@@ -12,6 +12,7 @@ Prestige est un site e-commerce spécialisé dans la vente de montres de luxe en
 
 ## 🎨 Maquette
 La maquette du projet a été réalisée en tenant compte des meilleures pratiques en matière de conception d'interfaces utilisateur. Elle comprend des pages telles que la page d'accueil, la page de produit, la page de connexion, la page d'inscription, la page de profil utilisateur, etc.
+
 ![Capture d'écran 2024-02-22 114350](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/901c3eb5-7338-46f1-811a-7799398bf62e)
 ![image](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/af936e52-0523-4a62-862c-cc13d9aa1607)
 ![Capture d'écran 2024-02-26 100513](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/252659c7-4eb2-4bae-afe8-b6e382d4111a)
@@ -28,8 +29,8 @@ La maquette du projet a été réalisée en tenant compte des meilleures pratiqu
 ## Répartition des Rôles
 Le projet a été réalisé en collaboration avec mes camarades de classe vous pouvez y retrouvez nos branches :
 - [[Sajed](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Sajed)]() : Front-End, Maquette, README.
-- [Marc](l[ien_vers_cv_github_marc](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main)) : Front-end, Trello.
-- [Miyad]([lien_vers_cv_github_miyad](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Miyad)) : Back-End, Intégration des APIs de Paiement, Sécurité.
+- [[Marc](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main)](l[ien_vers_cv_github_marc](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main)) : Front-end, Trello.
+- [[Miyad](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Miyad)]([lien_vers_cv_github_miyad](https://github.com/youssoufmiyad/e-commerce-PHP/tree/Miyad)) : Back-End, Intégration des APIs de Paiement, Sécurité.
 - [Abdou](https://github.com/youssoufmiyad/e-commerce-PHP/tree/main) : Back-End, Authentification Utilisateur, Gestion des Commandes.
 
 ## 🌟 Trello
