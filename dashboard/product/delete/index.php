@@ -37,6 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 ?>
 
 <body>
+<div class="navbar">
+        <ul>
+            <li><a href="../create">Enregistrer un nouveau produit</a></li>
+            <li><a href="../">Voir les produit</a></li>
+            <li><a href="./">Modifier un produit existant</a></li>
+            <li><a href="../delete">Supprimer un produit</a></li>
+        </ul>
+    </div>
 <?php
         $produits = $db->query('SELECT * FROM products');
         if ($produits->num_rows > 0) {
