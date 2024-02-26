@@ -18,11 +18,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $lastname = $_POST['form-lastname'];
         $firstname = $_POST['form-firstname'];
         $email = $_POST['form-email'];
+
         $password = password_hash($_POST['form-password'], PASSWORD_DEFAULT);
         $confirm_password = password_verify($_POST['form-confirmPWD'], $password);
 
+        $mails = $db->query("SELECT Email from users");
+        $mail_taken = false;
+
+        foreach ($mails as $value) {
+
+        }
+
+        if ($mail_taken) {
+            echo "Adresse mail déja enregistré sur un compte";
+        }
         // Vérification de la validité de l'email
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo "Invalid email format";
         }
         // Vérification de la validité du mot de passe selon le regex
@@ -57,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo $actualUser["UserId"];
                 $addPhoto->execute();
                 echo "Photo ajouté avec succès !";
+                unlink($tmpFile);
             } catch (\Throwable $th) {
                 throw $th;
             }
@@ -87,6 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             if (mail($to_email, $subject, $body, $headers)) {
                 echo "Email successfully sent to $to_email...";
+                header("location: ../");
             } else {
                 echo "Email sending failed...";
             }
@@ -112,15 +125,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <?php require_once('../navbar.php'); ?>
     <form method="post">
         <label for="form-lastname">Last name:</label><br>
-        <input type="text" id="form-lastname" name="form-lastname"><br><br>
+        <input type="text" id="form-lastname" name="form-lastname" required><br><br>
         <label for="form-firstname">First name:</label><br>
-        <input type="text" id="form-firstname" name="form-firstname"><br>
+        <input type="text" id="form-firstname" name="form-firstname" required><br>
         <label for="form-email">Email:</label><br>
-        <input type="text" id="form-email" name="form-email"><br><br>
+        <input type="text" id="form-email" name="form-email" required><br><br>
         <label for="form-password">Password:</label><br>
-        <input type="password" id="form-password" name="form-password"><br><br>
+        <input type="password" id="form-password" name="form-password" required><br><br>
         <label for="form-confirmPWD">Confirm password:</label><br>
-        <input type="password" id="form-confirmPWD" name="form-confirmPWD"><br><br>
+        <input type="password" id="form-confirmPWD" name="form-confirmPWD" required><br><br>
         <input type="submit" value="Submit">
     </form>
 </body>

@@ -4,13 +4,6 @@ session_start();
 
 $adressId = $_POST["adress-id"];
 
-// if (!empty($_POST["card-id"])) {
-//     $card_info = $db->query("SELECT * from payment WHERE CardNumber=" . $_POST["card-id"])->fetch_assoc();
-// }else{
-//     $card_info = $db->query("SELECT * from payment WHERE CardNumber=" . $_POST["form-card-number"])->fetch_assoc();
-// }
-
-
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($_POST["card-id"] !== "new") {
         ?>
@@ -25,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             // submit();
         </script>
         <?php
-    }
+    }else
     if (!empty($_POST['form-card-number']) && !empty($_POST['form-card-expiration']) && !empty($_POST['form-card-cvv'])) {
         $VISA_REGEX = "^4[0-9]{12}(?:[0-9]{3})?$^";
         $MASTERCARD_REGEX = "^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$^";
@@ -59,6 +52,20 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
     ?>
     <?php
+    }else{
+        ?>
+        <form method="POST" action="payment.php" id="id-form">
+            <input type="hidden" name="error" value="Champs manquant pour la nouvelle carte">
+        </form>
+        <script>
+            function submit() {
+                let form = document.getElementById("id-form");
+                form.submit();
+            }
+            submit();
+        </script>
+        <?php
+
     }
     $stmt = $db->prepare("INSERT INTO orders (AdressId, UserId) VALUES (?,?)");
     $stmt->bind_param("ii", $adressId, $_SESSION["user"]["userId"]);

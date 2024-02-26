@@ -1,9 +1,6 @@
 <?php
 require_once("../../utils/connect.php");
 session_start();
-if (empty($_POST["adress-id"])) {
-    header("location: http://localhost/e-commerce-PHP/cart/");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +14,11 @@ if (empty($_POST["adress-id"])) {
 </head>
 
 <body>
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" & isset($_POST["error"])) {
+    echo '<div class="error">'.$_POST["error"].'</div>';
+} ?>
     <div class="container-fluid">
         <div class="form-container">
             <form id="form-card" method="POST" action="confirmation.php">
@@ -32,7 +34,7 @@ if (empty($_POST["adress-id"])) {
                         foreach ($methods as $method) {
                             ?>
                             <div class="card-items" id="card-items">
-                                <input type="radio" name="card-id" value="<?= $method['CardNumber'] ?>">
+                                <input type="radio" name="card-id" value="<?= $method['CardNumber'] ?>" required>
                                 <label class="">
                                     <div class="card-type">
                                         <img src="../../assets/<?= $method['CardType'] ?>-card.svg" alt="card type" width="64px"
@@ -55,7 +57,7 @@ if (empty($_POST["adress-id"])) {
                 }
                 ?>
                     <div class="card-items" id="card-items">
-                        <input type="radio" name="card-id" value="new">
+                        <input type="radio" name="card-id" value="new" required>
                         <label class="new-card">
                             <h3>Nouvelle carte</h3>
                             <br>

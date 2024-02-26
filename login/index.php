@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($users->num_rows > 0) {
             while ($row = $users->fetch_assoc()) {
                 // Authentification
-                if ($row["Email"] === $email & password_verify($password, $row["Passwd"])) {
+                if ($row["Email"] === $email & $row["Enabled"] == 1 & password_verify($password, $row["Passwd"])) {
                     try {
 
                         $_SESSION["user"] = array(
@@ -41,6 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     } catch (Exception $th) {
                         throw $th;
                     }
+                }else{
+                    echo "<div class=\"login-error\">Ce compte n'a pas été activé, veuikkez l'activer en cliquant sur le lien envoyé par mail</div>";
                 }
             }
             echo "<div class=\"login-error\">adresse mail ou mot de passe incorrect</div>";
