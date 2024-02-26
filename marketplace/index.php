@@ -22,7 +22,7 @@ require_once('../utils/connect.php');
         <main>
             <?php
             // Requête de selection du produit à la base de données
-            $produits = $db->query('SELECT * FROM products WHERE Vendor="NULL"');
+            $produits = $db->query('SELECT * FROM products WHERE Vendor="NULL" AND Quantity>0');
             if ($produits->num_rows > 0) {
                 ?>
                 <!-- affichage de chaque produit -->

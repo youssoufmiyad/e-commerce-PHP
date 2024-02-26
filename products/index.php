@@ -22,7 +22,7 @@ require_once('../utils/connect.php');
         <main>
             <?php
             // Requête de selection du produit à la base de données
-            $produits = $db->query('SELECT * FROM products');
+            $produits = $db->query('SELECT * FROM products WHERE UserId IS NULL');
             if ($produits->num_rows > 0) {
                 ?>
                 <!-- affichage de chaque produit -->
