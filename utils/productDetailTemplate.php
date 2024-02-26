@@ -45,14 +45,13 @@ function productDetailTemplate($file, $name, $price, $description, $category, $v
 
 
                     <div class=\"buttons d-flex my-5\">
-                    <?php  
                         <div class=\"block\">
                             <a href=\"#\" class=\"shadow btn custom-btn \">Wishlist</a>
                         </div>
                         <div class=\"block\">
                             <button type=\"submit\" form=\"form-cart\" class=\"shadow btn custom-btn\" >ajouter au panier</button>
                         </div>
-                    ?>
+                    
                         <div class=\"block quantity\">
                             <form action=\"../add_to_cart.php\" id=\"form-cart\" method=\"post\">
                                 <input type=\"number\" class=\"form-control\" id=\"cart-quantity\" value=\"1\" min=\"1\" max=\"5\" name=\"cart-quantity\">
