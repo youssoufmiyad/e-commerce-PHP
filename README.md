@@ -1,7 +1,5 @@
 # 🛍️ Prestige - Vente de Montres de luxe en Ligne
 ![Capture d'écran 2024-02-22 184329](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/30be8f51-ef35-4354-ab3e-f6aec7a31346)
-![Golden-Silver-Prestige](https://github.com/youssoufmiyad/e-commerce-PHP/assets/112949717/d360bbd3-3616-4d31-88ae-8afb4784ca6a)
-
 
 ## 🌐 Description
 Prestige est un site e-commerce spécialisé dans la vente de montres de luxe en ligne. Le projet vise à offrir une plateforme conviviale et intuitive pour les passionnés de montres, où ils peuvent découvrir et acheter une variété de montres haut de gamme.
