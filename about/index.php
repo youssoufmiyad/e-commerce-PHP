@@ -16,24 +16,26 @@
     <?php include("../navbar.php") ?>
     <script>
       const logo = document.getElementById("logo")
-      logo.src = "../assets/img/White_Prestige.png"
+      logo.src = "../assets/img/Golden-Silver-Prestige.png"
     </script>
 
     <main>
       <h1>À Propos de Notre Équipe</h1>
       <div class="team">
         <div class="person">
-          <h2>Sajed (Front-End)</h2>
-          <p>
-            Sajed s'est occupé du design des différentes pages telles que
-            l'authentification, le profil, le panier, etc. Il a également géré
-            le routage et la gestion de l'authentification de l'utilisateur.
-            De plus, il a travaillé sur le front du dashboard.
-          </p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-            <a href="lien_vers_github_de_Sajed" target="_blank">GitHub</a>
-            <a href="lien_vers_cv_de_Sajed" target="_blank">CV</a>
+          <div class="sajed">
+            <h2>Sajed (Front-End)</h2>
+            <p>
+              Sajed s'est occupé du design des différentes pages telles que
+              l'authentification, le profil, le panier, etc. Il a également géré
+              le routage et la gestion de l'authentification de l'utilisateur.
+              De plus, il a travaillé sur le front du dashboard.
+            </p>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/sajed-benyoussef" target="_blank">LinkedIn</a>
+              <a href="https://github.com/Sajedd" target="_blank">GitHub</a>
+              <a href="../about/CV/Ben Youssef Sajed (2).pdf" target="_blank">CV</a>
+            </div>
           </div>
         </div>
         <div class="person">
@@ -45,7 +47,7 @@
           </p>
           <div class="social-links">
             <a href="lien_vers_linkedIn_de_Marc" target="_blank">LinkedIn</a>
-            <a href="lien_vers_github_de_Marc" target="_blank">GitHub</a>
+            <a href="https://github.com/MARCauguste" target="_blank">GitHub</a>
             <a href="lien_vers_cv_de_Marc" target="_blank">CV</a>
           </div>
         </div>
@@ -58,9 +60,9 @@
             dashboard pour les administrateurs.
           </p>
           <div class="social-links">
-            <a href="lien_vers_linkedIn_de_Abdoulaye" target="_blank">LinkedIn</a>
-            <a href="lien_vers_github_de_Abdoulaye" target="_blank">GitHub</a>
-            <a href="lien_vers_cv_de_Abdoulaye" target="_blank">CV</a>
+            <a href="https://www.linkedin.com/in/abdoulaye-camara-88067b296/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/abdouc95" target="_blank">GitHub</a>
+            <a href="../about/CV/abdoulaye_camara__1.pdf" target="_blank">CV</a>
           </div>
         </div>
         <div class="person">
