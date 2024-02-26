@@ -53,12 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
         }
-
-
-        ?>
-
-        <?php
-
+    ?>
+    <?php
     }
     $stmt = $db->prepare("INSERT INTO orders (AdressId, UserId) VALUES (?,?)");
     $stmt->bind_param("ii", $adressId, $_SESSION["user"]["userId"]);

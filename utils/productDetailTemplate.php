@@ -2,6 +2,7 @@
 function productDetailTemplate($file, $name, $price, $description, $category, $vendor, $quantity, $image)
 {
     fwrite($file, "
+    <?php session_start();?>
     <!DOCTYPE html>
     <head>
         <meta charset=\"UTF-8\">
@@ -20,7 +21,6 @@ function productDetailTemplate($file, $name, $price, $description, $category, $v
             <div class=\"col-md-5\">
                 <div class=\"main-img\">
                     <img class=\"img-fluid\" src=\"$image\" alt=\"ProductS\">
-                    
                 </div>
             </div>
             <div class=\"col-md-5\">
@@ -45,12 +45,14 @@ function productDetailTemplate($file, $name, $price, $description, $category, $v
 
 
                     <div class=\"buttons d-flex my-5\">
+                    <?php  
                         <div class=\"block\">
                             <a href=\"#\" class=\"shadow btn custom-btn \">Wishlist</a>
                         </div>
                         <div class=\"block\">
                             <button type=\"submit\" form=\"form-cart\" class=\"shadow btn custom-btn\" >ajouter au panier</button>
                         </div>
+                    ?>
                         <div class=\"block quantity\">
                             <form action=\"../add_to_cart.php\" id=\"form-cart\" method=\"post\">
                                 <input type=\"number\" class=\"form-control\" id=\"cart-quantity\" value=\"1\" min=\"1\" max=\"5\" name=\"cart-quantity\">
@@ -61,19 +63,11 @@ function productDetailTemplate($file, $name, $price, $description, $category, $v
                             </form>                            
                         </div>
                     </div>
-
-
-
-
                 </div>
-
                 <div class=\"product-details my-4\">
                     <p class=\"details-title text-color mb-1\">Product Details</p>
                     <p class=\"description\">$description</p>
                 </div>
-              
-
-
                 <div class=\"delivery my-4\">
                     <p class=\"font-weight-bold mb-0\"><span><i class=\"fa-solid fa-truck\"></i></span> <b>Delivery done in 3 days from date of purchase</b> </p>
                     <p class=\"text-secondary\">Order now to get this product delivery</p>
@@ -82,14 +76,9 @@ function productDetailTemplate($file, $name, $price, $description, $category, $v
                     <p class=\"font-weight-bold mb-0\"><span><i class=\"fa-solid fa-filter\"></i></span> <b>Delivery options</b> </p>
                     <p class=\"text-secondary\">FEDEX</p>
                 </div>
-                
-             
             </div>
         </div>
-
     </body>
     </html> 
     ");
-
-
 }

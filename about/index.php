@@ -31,7 +31,7 @@
             De plus, il a travaillé sur le front du dashboard.
           </p>
           <div class="social-links">
-            <a href="lien_vers_linkedIn_de_Sajed" target="_blank">LinkedIn</a>
+            <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
             <a href="lien_vers_github_de_Sajed" target="_blank">GitHub</a>
             <a href="lien_vers_cv_de_Sajed" target="_blank">CV</a>
           </div>
